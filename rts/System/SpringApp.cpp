@@ -950,7 +950,7 @@ void SpringApp::Kill(bool fromRun)
 	spring::SafeDelete(clientNet);
 	spring::SafeDelete(gameServer);
 
-	LOG("[SpringApp::%s][4] font=%p", __func__, font);
+	LOG("[SpringApp::%s][4] font=%p", __func__, font.get());
 	#ifndef HEADLESS
 	spring::SafeDelete(agui::gui);
 	#endif
