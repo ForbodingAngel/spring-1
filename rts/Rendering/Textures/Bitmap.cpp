@@ -66,6 +66,7 @@ public:
 	spring::mutex& GetMutex() { return bmpMutex; }
 public:
 	static void Init(size_t size);
+	static void Kill();
 	static inline std::unique_ptr<ITexMemPool> texMemPool = {};
 protected:
 	// libIL is not thread-safe, neither are {Alloc,Free}
@@ -297,6 +298,11 @@ void ITexMemPool::Init(size_t size)
 		if (texMemPool == nullptr || typeid(*texMemPool.get()) != typeid(  TexMemPool))
 			texMemPool = std::make_unique<  TexMemPool>();
 	}
+}
+
+void ITexMemPool::Kill()
+{
+	texMemPool = {};
 }
 
 
@@ -969,6 +975,11 @@ void CBitmap::InitPool(size_t size)
 	ITexMemPool::Init(size);
 	ITexMemPool::texMemPool->Resize(size);
 	ITexMemPool::texMemPool->Defrag();
+}
+
+void CBitmap::KillPool()
+{
+	ITexMemPool::Kill();
 }
 
 

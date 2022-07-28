@@ -750,6 +750,7 @@ void SpringApp::Reload(const std::string script)
 	CBitmap::InitPool(configHandler->GetInt("TextureMemPoolSize"));
 	CglFont::ReallocAtlases(false);
 	#else
+	CBitmap::KillPool();
 	CBitmap::InitPool(configHandler->GetInt("TextureMemPoolSize"));
 	#endif
 
@@ -972,6 +973,7 @@ void SpringApp::Kill(bool fromRun)
 	LOG("[SpringApp::%s][7]", __func__);
 
 	CGlobalRendering::KillStatic();
+	CBitmap::KillPool();
 	CLuaSocketRestrictions::KillStatic();
 
 	// also gets rid of configHandler
