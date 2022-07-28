@@ -41,6 +41,8 @@ public:
 	void GrabLock() { bmpMutex.lock(); }
 	void FreeLock() { bmpMutex.unlock(); }
 
+	virtual ~ITexMemPool() {}
+
 	virtual size_t Size() const = 0;
 	virtual size_t AllocIdx(size_t size) = 0;
 	virtual size_t AllocIdxRaw(size_t size) = 0;
@@ -89,6 +91,11 @@ private:
 	const uint8_t* Base() const { return memArray.data(); }
 	      uint8_t* Base()       { return memArray.data(); }
 public:
+	~TexMemPool() override {
+		memArray = {};
+		freeList = {};
+	}
+
 	size_t Size() const override { return (memArray.size()); }
 	size_t AllocIdx(size_t size) override { return (Alloc(size) - Base()); }
 	size_t AllocIdxRaw(size_t size) override { return (AllocRaw(size) - Base()); }
