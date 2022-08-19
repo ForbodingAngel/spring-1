@@ -233,7 +233,7 @@ const char* spring_lua_get_handle_name(lua_State* L)
 static constexpr const char* LUA_OOM_FMT_STR = "[%s][handle=%s][OOM] synced=%d {alloced,maximum}={" _STPF_ "," _STPF_ "}bytes\n";
 static constexpr uint64_t MAX_ALLOC_BYTES[] = {
 	 768u * (1024u * 1024u), // spring32
-	(64u * 1536u) * (1024u * 1024u), // spring64 yes this is a 96gb limit
+	(32ul * 1536ul) * (1024ul * 1024ul) + (1836ul) * (1024ul * 1024ul), // spring64 yes this is a 96gb limit
 };
 
 // tracks allocations across all states
