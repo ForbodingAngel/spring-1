@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><strong>CMD</strong></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>CMD</code></h1>
+<p>Command constants</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaConstCMD.cpp">rts/Lua/LuaConstCMD.cpp</a>
+    </ul>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#CMD">CMD</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "CMD"></a>
+    <strong>CMD</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">FIRESTATE_NONE</span>
+         -1
+        </li>
+        <li><span class="parameter">MOVESTATE_NONE</span>
+         -1
+        </li>
+        <li><span class="parameter">STOP</span>
+         0
+        </li>
+        <li><span class="parameter">MOVESTATE_HOLDPOS</span>
+         0
+        </li>
+        <li><span class="parameter">FIRESTATE_HOLDFIRE</span>
+         0
+        </li>
+        <li><span class="parameter">INSERT</span>
+         1
+        </li>
+        <li><span class="parameter">MOVESTATE_MANEUVER</span>
+         1
+        </li>
+        <li><span class="parameter">FIRESTATE_RETURNFIRE</span>
+         1
+        </li>
+        <li><span class="parameter">WAITCODE_TIME</span>
+         1
+        </li>
+        <li><span class="parameter">WAITCODE_DEATH</span>
+         2
+        </li>
+        <li><span class="parameter">MOVESTATE_ROAM</span>
+         2
+        </li>
+        <li><span class="parameter">REMOVE</span>
+         2
+        </li>
+        <li><span class="parameter">FIRESTATE_FIREATWILL</span>
+         2
+        </li>
+        <li><span class="parameter">FIRESTATE_FIREATNEUTRAL</span>
+         3
+        </li>
+        <li><span class="parameter">WAITCODE_SQUAD</span>
+         3
+        </li>
+        <li><span class="parameter">OPT_META</span>
+         4
+        </li>
+        <li><span class="parameter">WAITCODE_GATHER</span>
+         4
+        </li>
+        <li><span class="parameter">WAIT</span>
+         5
+        </li>
+        <li><span class="parameter">TIMEWAIT</span>
+         6
+        </li>
+        <li><span class="parameter">DEATHWAIT</span>
+         7
+        </li>
+        <li><span class="parameter">OPT_INTERNAL</span>
+         8
+        </li>
+        <li><span class="parameter">SQUADWAIT</span>
+         8
+        </li>
+        <li><span class="parameter">GATHERWAIT</span>
+         9
+        </li>
+        <li><span class="parameter">MOVE</span>
+         10
+        </li>
+        <li><span class="parameter">PATROL</span>
+         15
+        </li>
+        <li><span class="parameter">FIGHT</span>
+         16
+        </li>
+        <li><span class="parameter">OPT_RIGHT</span>
+         16
+        </li>
+        <li><span class="parameter">LOOPBACKATTACK</span>
+         20
+        </li>
+        <li><span class="parameter">ATTACK</span>
+         20
+        </li>
+        <li><span class="parameter">AREA_ATTACK</span>
+         21
+        </li>
+        <li><span class="parameter">GUARD</span>
+         25
+        </li>
+        <li><span class="parameter">AISELECT</span>
+         30
+        </li>
+        <li><span class="parameter">OPT_SHIFT</span>
+         32
+        </li>
+        <li><span class="parameter">GROUPSELECT</span>
+         35
+        </li>
+        <li><span class="parameter">GROUPADD</span>
+         36
+        </li>
+        <li><span class="parameter">GROUPCLEAR</span>
+         37
+        </li>
+        <li><span class="parameter">REPAIR</span>
+         40
+        </li>
+        <li><span class="parameter">FIRE_STATE</span>
+         45
+        </li>
+        <li><span class="parameter">MOVE_STATE</span>
+         50
+        </li>
+        <li><span class="parameter">SETBASE</span>
+         55
+        </li>
+        <li><span class="parameter">INTERNAL</span>
+         60
+        </li>
+        <li><span class="parameter">OPT_CTRL</span>
+         64
+        </li>
+        <li><span class="parameter">SELFD</span>
+         65
+        </li>
+        <li><span class="parameter">SET_WANTED_MAX_SPEED</span>
+         70
+        </li>
+        <li><span class="parameter">LOAD_UNITS</span>
+         75
+        </li>
+        <li><span class="parameter">LOAD_ONTO</span>
+         76
+        </li>
+        <li><span class="parameter">UNLOAD_UNITS</span>
+         80
+        </li>
+        <li><span class="parameter">UNLOAD_UNIT</span>
+         81
+        </li>
+        <li><span class="parameter">ONOFF</span>
+         85
+        </li>
+        <li><span class="parameter">RECLAIM</span>
+         90
+        </li>
+        <li><span class="parameter">CLOAK</span>
+         95
+        </li>
+        <li><span class="parameter">STOCKPILE</span>
+         100
+        </li>
+        <li><span class="parameter">MANUALFIRE</span>
+         105
+        </li>
+        <li><span class="parameter">DGUN</span>
+         105
+        </li>
+        <li><span class="parameter">RESTORE</span>
+         110
+        </li>
+        <li><span class="parameter">REPEAT</span>
+         115
+        </li>
+        <li><span class="parameter">TRAJECTORY</span>
+         120
+        </li>
+        <li><span class="parameter">RESURRECT</span>
+         125
+        </li>
+        <li><span class="parameter">OPT_ALT</span>
+         128
+        </li>
+        <li><span class="parameter">CAPTURE</span>
+         130
+        </li>
+        <li><span class="parameter">AUTOREPAIRLEVEL</span>
+         135
+        </li>
+        <li><span class="parameter">IDLEMODE</span>
+         145
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

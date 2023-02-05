@@ -1,0 +1,4259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Teams">Teams </a></li>
+<li><a href="#Projectiles">Projectiles </a></li>
+<li><a href="#Features">Features </a></li>
+<li><a href="#Common">Common </a></li>
+<li><a href="#Game">Game </a></li>
+<li><a href="#Units">Units </a></li>
+<li><a href="#Transport">Transport </a></li>
+<li><a href="#Unit_Interactions">Unit Interactions </a></li>
+<li><a href="#Draw__Functions">Draw* Functions </a></li>
+<li><a href="#Input">Input </a></li>
+<li><a href="#Downloads">Downloads </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><strong>LuaHandle</strong></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>LuaHandle</code></h1>
+<p>Callins, functions called by the Engine</p>
+<p>
+
+
+<p> This page is future looking to unified widget/gadget (aka "addon") handler, which may yet be some way off, c.f. the changelog.</p>
+
+<p> Related Sourcecode: <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaHandle.cpp">LuaHandle.cpp</a></p>
+
+<p> For now, to use these addons in a widget, prepend widget: and, for a gadget, prepend gadget:. For example,</p>
+
+
+<pre>
+<span class="keyword">function</span> widget:UnitCreated(unitID, unitDefID, unitTeam, builderID)
+    ...
+<span class="keyword">end</span>
+</pre>
+
+<p> Some functions may differ between (synced) gadget and widgets; those are in the <a href="#Synced___Unsynced_Shared">Synced - Unsynced Shared</a> section. Essentially the reason is that all information should be available to synced (game logic controlling) gadgets, but restricted to unsynced gadget/widget (e.g. information about an enemy unit only detected via radar and not yet in LOS). In such cases the full (synced) param list is documented.</p>
+
+<p> Attention: some callins will only work on the unsynced portion of the gadget. Due to the type-unsafe nature of lua parsing, those callins not firing up might be hard to trace. This document will be continuously updated to properly alert about those situations.</p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaHandle.cpp">rts/Lua/LuaHandle.cpp</a>
+    </ul>
+
+
+<h2><a href="#Teams">Teams </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#TeamDied">TeamDied(teamID)</a></td>
+	<td class="summary">Called when a team dies (see <code>Spring.KillTeam</code>).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TeamChanged">TeamChanged(teamID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerChanged">PlayerChanged(playerID)</a></td>
+	<td class="summary">Called whenever a player's status changes e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerAdded">PlayerAdded(playerID)</a></td>
+	<td class="summary">Called whenever a new player joins the game.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#PlayerRemoved">PlayerRemoved(playerID, reason)</a></td>
+	<td class="summary">Called whenever a player is removed from the game.</td>
+	</tr>
+</table>
+<h2><a href="#Projectiles">Projectiles </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ProjectileCreated">ProjectileCreated(proID, proOwnerID, weaponDefID)</a></td>
+	<td class="summary">Called when the projectile is created.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ProjectileDestroyed">ProjectileDestroyed(proID, ownerID, proWeaponDefID)</a></td>
+	<td class="summary">Called when the projectile is destroyed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Explosion">Explosion(weaponDefID, px, py, pz, attackerID, projectileID)</a></td>
+	<td class="summary">Called when an explosion occurs.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StockpileChanged">StockpileChanged(unitID, unitDefID, unitTeam, weaponNum, oldCount, newCount)</a></td>
+	<td class="summary">Called when a units stockpile of weapons increases or decreases.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#RecvLuaMsg">RecvLuaMsg(msg, playerID)</a></td>
+	<td class="summary">Receives messages from unsynced sent via <code>Spring.SendLuaRulesMsg</code> or <code>Spring.SendLuaUIMsg</code>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Save">Save(zip)</a></td>
+	<td class="summary">Called when a chat command '/save' or '/savegame' is received.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnsyncedHeightMapUpdate">UnsyncedHeightMapUpdate()</a></td>
+	<td class="summary">Called when the unsynced copy of the height-map is altered.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Update">Update(dt)</a></td>
+	<td class="summary">Called for every draw frame (including when the game is paused) and at least once per sim frame except when catching up.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ViewResize">ViewResize(viewSizeX, viewSizeY)</a></td>
+	<td class="summary">Called whenever the window is resized.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SunChanged">SunChanged()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DefaultCommand">DefaultCommand(type, id)</a></td>
+	<td class="summary">Used to set the default command when a unit is selected.</td>
+	</tr>
+</table>
+<h2><a href="#Features">Features </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#FeatureCreated">FeatureCreated(featureID, allyTeamID)</a></td>
+	<td class="summary">Called when a feature is created.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FeatureDestroyed">FeatureDestroyed(featureID, allyTeamID)</a></td>
+	<td class="summary">Called when a feature is destroyed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FeatureDamaged">FeatureDamaged(featureID, featureDefID, featureTeam, damage, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)</a></td>
+	<td class="summary">Called when a feature is damaged.</td>
+	</tr>
+</table>
+<h2><a href="#Common">Common </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Initialize">Initialize()</a></td>
+	<td class="summary">Called when the addon is (re)loaded.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadCode">LoadCode()</a></td>
+	<td class="summary">Called when the game is (re)loaded.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Shutdown">Shutdown()</a></td>
+	<td class="summary">Called when the addon or the game is shutdown.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GotChatMsg">GotChatMsg(msg, playerID)</a></td>
+	<td class="summary">Called when a player issues a UI command e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Load">Load(zipReader)</a></td>
+	<td class="summary">Called after <a href="../modules/LuaHandle.html#GamePreload">GamePreload</a> and before <a href="../modules/LuaHandle.html#GameStart">GameStart</a>.</td>
+	</tr>
+</table>
+<h2><a href="#Game">Game </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#GamePreload">GamePreload()</a></td>
+	<td class="summary">Called before the 0 gameframe.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameStart">GameStart()</a></td>
+	<td class="summary">Called upon the start of the game.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameOver">GameOver(winningAllyTeams)</a></td>
+	<td class="summary">Called when the game ends</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GamePaused">GamePaused(playerID, paused)</a></td>
+	<td class="summary">Called when the game is paused.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameFrame">GameFrame(frame)</a></td>
+	<td class="summary">Called for every game simulation frame (30 per second).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameID">GameID(gameID)</a></td>
+	<td class="summary">Called once to deliver the gameID</td>
+	</tr>
+</table>
+<h2><a href="#Units">Units </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#UnitCreated">UnitCreated(unitID, unitDefID, unitTeam[, builderID])</a></td>
+	<td class="summary">Called at the moment the unit is created.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitFinished">UnitFinished(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called at the moment the unit is completed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitFromFactory">UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)</a></td>
+	<td class="summary">Called when a factory finishes construction of a unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitReverseBuilt">UnitReverseBuilt(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called when a living unit becomes a nanoframe again.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitDestroyed">UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)</a></td>
+	<td class="summary">Called when a unit is destroyed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitTaken">UnitTaken(unitID, unitDefID, oldTeam, newTeam)</a></td>
+	<td class="summary">Called when a unit is transferred between teams.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitGiven">UnitGiven(unitID, unitDefID, oldTeam, newTeam)</a></td>
+	<td class="summary">Called when a unit is transferred between teams.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitIdle">UnitIdle(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called when a unit is idle (empty command queue).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitCommand">UnitCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOpts, cmdTag)</a></td>
+	<td class="summary">Called after when a unit accepts a command, after <code>AllowCommand</code> returns true.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitCmdDone">UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOpts, cmdTag)</a></td>
+	<td class="summary">Called when a unit completes a command.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitDamaged">UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)</a></td>
+	<td class="summary">Called when a unit is damaged (after UnitPreDamaged).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitStunned">UnitStunned(unitID, unitDefID, unitTeam, stunned)</a></td>
+	<td class="summary">Called when a unit changes its stun status.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitExperience">UnitExperience(unitID, unitDefID, unitTeam, experience, oldExperience)</a></td>
+	<td class="summary">Called when a unit gains experience greater or equal to the minimum limit set by calling <code>Spring.SetExperienceGrade</code>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitHarvestStorageFull">UnitHarvestStorageFull(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called when a unit's harvestStorage is full (according to its unitDef's entry).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitSeismicPing">UnitSeismicPing(x, y, z, strength, allyTeam, unitID, unitDefID)</a></td>
+	<td class="summary">Called when a unit emits a seismic ping.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitEnteredRadar">UnitEnteredRadar(unitID, unitTeam, allyTeam, unitDefID)</a></td>
+	<td class="summary">Called when a unit enters radar of an allyteam.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitEnteredLos">UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)</a></td>
+	<td class="summary">Called when a unit enters LOS of an allyteam.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitLeftRadar">UnitLeftRadar(unitID, unitTeam, allyTeam, unitDefID)</a></td>
+	<td class="summary">Called when a unit leaves radar of an allyteam.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitLeftLos">UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)</a></td>
+	<td class="summary">Called when a unit leaves LOS of an allyteam.</td>
+	</tr>
+</table>
+<h2><a href="#Transport">Transport </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#UnitLoaded">UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)</a></td>
+	<td class="summary">Called when a unit is loaded by a transport.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitUnloaded">UnitUnloaded(unitID, unitDefID, unitTeam, transportID, transportTeam)</a></td>
+	<td class="summary">Called when a unit is unloaded by a transport.</td>
+	</tr>
+</table>
+<h2><a href="#Unit_Interactions">Unit Interactions </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#UnitEnteredWater">UnitEnteredWater(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitLeftAir">UnitLeftAir(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitLeftWater">UnitLeftWater(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitEnteredAir">UnitEnteredAir(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitCloaked">UnitCloaked(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called when a unit cloaks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitDecloaked">UnitDecloaked(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called when a unit decloaks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitUnitCollision">UnitUnitCollision(colliderID, collideeID)</a></td>
+	<td class="summary">Called when two units collide.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitFeatureCollision">UnitFeatureCollision(colliderID, collideeID)</a></td>
+	<td class="summary">Called when a unit collides with a feature.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitMoveFailed">UnitMoveFailed(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#RenderUnitDestroyed">RenderUnitDestroyed(unitID, unitDefID, unitTeam)</a></td>
+	<td class="summary">Called just before a unit is invalid, after it finishes its death animation.</td>
+	</tr>
+</table>
+<h2><a href="#Draw__Functions">Draw* Functions </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#DrawGenesis">DrawGenesis()</a></td>
+	<td class="summary">Use this callin to update textures, shaders, etc.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorld">DrawWorld()</a></td>
+	<td class="summary">Spring draws command queues, 'map stuff', and map marks.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorldPreUnit">DrawWorldPreUnit()</a></td>
+	<td class="summary">Spring draws units, features, some water types, cloaked units, and the sun.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawPreDecals">DrawPreDecals()</a></td>
+	<td class="summary">Called before decals are drawn</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorldPreParticles">DrawWorldPreParticles()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorldShadow">DrawWorldShadow()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorldReflection">DrawWorldReflection()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawWorldRefraction">DrawWorldRefraction()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawGroundPreForward">DrawGroundPreForward()</a></td>
+	<td class="summary">Runs at the start of the forward pass when a custom map shader has been assigned via <code>Spring.SetMapShader</code> (convenient for setting uniforms).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawGroundPostForward">DrawGroundPostForward()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawGroundPreDeferred">DrawGroundPreDeferred()</a></td>
+	<td class="summary">Runs at the start of the deferred pass when a custom map shader has been assigned via <code>Spring.SetMapShader</code> (convenient for setting uniforms).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawGroundDeferred">DrawGroundDeferred()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawGroundPostDeferred">DrawGroundPostDeferred()</a></td>
+	<td class="summary">This runs at the end of its respective deferred pass.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawUnitsPostDeferred">DrawUnitsPostDeferred()</a></td>
+	<td class="summary">Runs at the end of the unit deferred pass.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawFeaturesPostDeferred">DrawFeaturesPostDeferred()</a></td>
+	<td class="summary">Runs at the end of the feature deferred pass to inform Lua code it should make use of the $model<em>gbuffer</em>* textures before another pass overwrites them (and to allow proper blending with e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawShadowUnitsLua">DrawShadowUnitsLua()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawShadowFeaturesLua">DrawShadowFeaturesLua()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawScreen">DrawScreen(viewSizeX, viewSizeY)</a></td>
+	<td class="summary">Also available to LuaMenu.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawScreenEffects">DrawScreenEffects(viewSizeX, viewSizeY)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawScreenPost">DrawScreenPost(viewSizeX, viewSizeY)</a></td>
+	<td class="summary">Similar to DrawScreenEffects, this can be used to alter the contents of a frame after it has been completely rendered (i.e.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawInMinimap">DrawInMinimap(sx, sy)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawInMinimapBackground">DrawInMinimapBackground(sx, sy)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameProgress">GameProgress(serverFrameNum)</a></td>
+	<td class="summary">Called every 60 frames, calculating delta between <a href="../modules/LuaHandle.html#GameFrame">GameFrame</a> and <a href="../modules/LuaHandle.html#GameProgress">GameProgress</a>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#KeyPress">KeyPress(keyCode)</a></td>
+	<td class="summary">Called repeatedly when a key is pressed down.</td>
+	</tr>
+</table>
+<h2><a href="#Input">Input </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#mods">mods</a></td>
+	<td class="summary">Key Modifier Params</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#KeyPress">KeyPress(keyCode, mods, isRepeat, label, utf32char, scanCode, actionList)</a></td>
+	<td class="summary">Called repeatedly when a key is pressed down.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#KeyRelease">KeyRelease(keyCode, mods, label, utf32char, scanCode, actionList)</a></td>
+	<td class="summary">Called when the key is released.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TextInput">TextInput(utf8char)</a></td>
+	<td class="summary">Called whenever a key press results in text input.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TextEditing">TextEditing(utf8, start, length)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MousePress">MousePress(x, y, button)</a></td>
+	<td class="summary">Called when a mouse button is pressed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MouseRelease">MouseRelease(x, y, button)</a></td>
+	<td class="summary">Called when a mouse button is released.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MouseMove">MouseMove(x, y, dx, dy, button)</a></td>
+	<td class="summary">Called when the mouse is moved.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MouseWheel">MouseWheel(up, value)</a></td>
+	<td class="summary">Called when the mouse wheel is moved.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsAbove">IsAbove(x, y)</a></td>
+	<td class="summary">Called every <a href="../modules/LuaHandle.html#Update">Update</a>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetTooltip">GetTooltip(x, y)</a></td>
+	<td class="summary">Called when <code>Spring.IsAbove</code> returns true.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cmdOpts">cmdOpts</a></td>
+	<td class="summary">Parameters for command options</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CommandNotify">CommandNotify(cmdID, cmdParams, cmdOpts)</a></td>
+	<td class="summary">Called when a command is issued.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AddConsoleLine">AddConsoleLine(msg, priority)</a></td>
+	<td class="summary">Called when text is entered into the console (e.g.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GroupChanged">GroupChanged(groupID)</a></td>
+	<td class="summary">Called when a unit is added to or removed from a control group.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#WorldTooltip">WorldTooltip(ttType, data1[, data2[, data3]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MapDrawCmd">MapDrawCmd(playerID, type, posX, posY, posZ, data4[, pos2Y[, pos2Z]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GameSetup">GameSetup(state, ready, playerStates)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#RecvSkirmishAIMessage">RecvSkirmishAIMessage(aiTeam, dataStr)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Downloads">Downloads </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#DownloadQueued">DownloadQueued(id, name, type)</a></td>
+	<td class="summary">Called when a Pr-downloader download is queued</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DownloadStarted">DownloadStarted(id)</a></td>
+	<td class="summary">Called when a Pr-downloader download is started via VFS.DownloadArchive.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DownloadFinished">DownloadFinished(id)</a></td>
+	<td class="summary">Called when a Pr-downloader download finishes successfully.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DownloadFailed">DownloadFailed(id, errorID)</a></td>
+	<td class="summary">Called when a Pr-downloader download fails to complete.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DownloadProgress">DownloadProgress(id, downloaded, total)</a></td>
+	<td class="summary">Called incrementally during a Pr-downloader download.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Teams"></a>Teams </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "TeamDied"></a>
+    <strong>TeamDied(teamID)</strong>
+    </dt>
+    <dd>
+    Called when a team dies (see <code>Spring.KillTeam</code>).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TeamChanged"></a>
+    <strong>TeamChanged(teamID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerChanged"></a>
+    <strong>PlayerChanged(playerID)</strong>
+    </dt>
+    <dd>
+    Called whenever a player's status changes e.g.  becoming a spectator.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerAdded"></a>
+    <strong>PlayerAdded(playerID)</strong>
+    </dt>
+    <dd>
+    Called whenever a new player joins the game.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "PlayerRemoved"></a>
+    <strong>PlayerRemoved(playerID, reason)</strong>
+    </dt>
+    <dd>
+    Called whenever a player is removed from the game.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">reason</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Projectiles"></a>Projectiles </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "ProjectileCreated"></a>
+    <strong>ProjectileCreated(proID, proOwnerID, weaponDefID)</strong>
+    </dt>
+    <dd>
+    Called when the projectile is created. </p>
+
+<p> Note that weaponDefID is missing if the projectile is spawned as part of a burst, but <code>Spring.GetProjectileDefID</code> and <code>Spring.GetProjectileName</code> still work in callin scope using proID.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">proID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">proOwnerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">weaponDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ProjectileDestroyed"></a>
+    <strong>ProjectileDestroyed(proID, ownerID, proWeaponDefID)</strong>
+    </dt>
+    <dd>
+    Called when the projectile is destroyed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">proID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ownerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">proWeaponDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Explosion"></a>
+    <strong>Explosion(weaponDefID, px, py, pz, attackerID, projectileID)</strong>
+    </dt>
+    <dd>
+    Called when an explosion occurs.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">weaponDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">px</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">py</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">pz</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">projectileID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool noGfx if then no graphical effects are drawn by the engine for this explosion.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StockpileChanged"></a>
+    <strong>StockpileChanged(unitID, unitDefID, unitTeam, weaponNum, oldCount, newCount)</strong>
+    </dt>
+    <dd>
+    Called when a units stockpile of weapons increases or decreases.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">weaponNum</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">oldCount</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">newCount</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RecvLuaMsg"></a>
+    <strong>RecvLuaMsg(msg, playerID)</strong>
+    </dt>
+    <dd>
+    Receives messages from unsynced sent via <code>Spring.SendLuaRulesMsg</code> or <code>Spring.SendLuaUIMsg</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Save"></a>
+    <strong>Save(zip)</strong>
+    </dt>
+    <dd>
+    Called when a chat command '/save' or '/savegame' is received.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">zip</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         a userdatum representing the savegame zip file. See Lua_SaveLoad.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnsyncedHeightMapUpdate"></a>
+    <strong>UnsyncedHeightMapUpdate()</strong>
+    </dt>
+    <dd>
+    Called when the unsynced copy of the height-map is altered.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">x1</span></span>
+
+
+</li>
+        <li>
+           <span class="types"><span class="type">z1</span></span>
+
+
+</li>
+        <li>
+           <span class="types"><span class="type">x2</span></span>
+
+
+</li>
+        <li>
+           <span class="types"><span class="type">z2</span></span>
+
+
+</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Update"></a>
+    <strong>Update(dt)</strong>
+    </dt>
+    <dd>
+    Called for every draw frame (including when the game is paused) and at least once per sim frame except when catching up.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dt</span>
+            <span class="types"><span class="type">number</span></span>
+         the time since the last update.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ViewResize"></a>
+    <strong>ViewResize(viewSizeX, viewSizeY)</strong>
+    </dt>
+    <dd>
+    Called whenever the window is resized.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">viewSizeX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">viewSizeY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SunChanged"></a>
+    <strong>SunChanged()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DefaultCommand"></a>
+    <strong>DefaultCommand(type, id)</strong>
+    </dt>
+    <dd>
+    Used to set the default command when a unit is selected.  First parameter is the type of the object pointed at (either "unit or "feature") and the second is its unitID or featureID respectively.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         "unit" | "feature"
+        </li>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">int</span></span>
+         unitID | featureID
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Features"></a>Features </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "FeatureCreated"></a>
+    <strong>FeatureCreated(featureID, allyTeamID)</strong>
+    </dt>
+    <dd>
+    Called when a feature is created. (featureID, allyTeamID)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FeatureDestroyed"></a>
+    <strong>FeatureDestroyed(featureID, allyTeamID)</strong>
+    </dt>
+    <dd>
+    Called when a feature is destroyed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FeatureDamaged"></a>
+    <strong>FeatureDamaged(featureID, featureDefID, featureTeam, damage, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)</strong>
+    </dt>
+    <dd>
+    Called when a feature is damaged.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">featureDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">featureTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">damage</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">weaponDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">projectileID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Common"></a>Common </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Initialize"></a>
+    <strong>Initialize()</strong>
+    </dt>
+    <dd>
+    Called when the addon is (re)loaded.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadCode"></a>
+    <strong>LoadCode()</strong>
+    </dt>
+    <dd>
+    Called when the game is (re)loaded.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Shutdown"></a>
+    <strong>Shutdown()</strong>
+    </dt>
+    <dd>
+    Called when the addon or the game is shutdown.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GotChatMsg"></a>
+    <strong>GotChatMsg(msg, playerID)</strong>
+    </dt>
+    <dd>
+    Called when a player issues a UI command e.g.  types /foo or /luarules foo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Load"></a>
+    <strong>Load(zipReader)</strong>
+    </dt>
+    <dd>
+    Called after <a href="../modules/LuaHandle.html#GamePreload">GamePreload</a> and before <a href="../modules/LuaHandle.html#GameStart">GameStart</a>.  See Lua_SaveLoad.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">zipReader</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Game"></a>Game </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "GamePreload"></a>
+    <strong>GamePreload()</strong>
+    </dt>
+    <dd>
+    Called before the 0 gameframe. </p>
+
+<p> Is not called when a saved game is loaded.
+()
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameStart"></a>
+    <strong>GameStart()</strong>
+    </dt>
+    <dd>
+    Called upon the start of the game. </p>
+
+<p> Is not called when a saved game is loaded.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameOver"></a>
+    <strong>GameOver(winningAllyTeams)</strong>
+    </dt>
+    <dd>
+    Called when the game ends
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">winningAllyTeams</span>
+            <span class="types"><span class="type">{number,...}</span></span>
+         list of winning allyTeams, if empty the game result was undecided (like when dropping from an host).
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GamePaused"></a>
+    <strong>GamePaused(playerID, paused)</strong>
+    </dt>
+    <dd>
+    Called when the game is paused.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">paused</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameFrame"></a>
+    <strong>GameFrame(frame)</strong>
+    </dt>
+    <dd>
+    Called for every game simulation frame (30 per second).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">frame</span>
+            <span class="types"><span class="type">number</span></span>
+         Starts at frame 1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameID"></a>
+    <strong>GameID(gameID)</strong>
+    </dt>
+    <dd>
+    Called once to deliver the gameID
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">gameID</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         encoded in hex.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Units"></a>Units </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "UnitCreated"></a>
+    <strong>UnitCreated(unitID, unitDefID, unitTeam[, builderID])</strong>
+    </dt>
+    <dd>
+    Called at the moment the unit is created.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">builderID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitFinished"></a>
+    <strong>UnitFinished(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called at the moment the unit is completed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitFromFactory"></a>
+    <strong>UnitFromFactory(unitID, unitDefID, unitTeam, factID, factDefID, userOrders)</strong>
+    </dt>
+    <dd>
+    Called when a factory finishes construction of a unit.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">factID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">factDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">userOrders</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitReverseBuilt"></a>
+    <strong>UnitReverseBuilt(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called when a living unit becomes a nanoframe again.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitDestroyed"></a>
+    <strong>UnitDestroyed(unitID, unitDefID, unitTeam, attackerID, attackerDefID, attackerTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is destroyed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitTaken"></a>
+    <strong>UnitTaken(unitID, unitDefID, oldTeam, newTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is transferred between teams.  This is called before <a href="../modules/LuaHandle.html#UnitGiven">UnitGiven</a> and in that moment unit is still assigned to the oldTeam.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">oldTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">newTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitGiven"></a>
+    <strong>UnitGiven(unitID, unitDefID, oldTeam, newTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is transferred between teams.  This is called after <a href="../modules/LuaHandle.html#UnitTaken">UnitTaken</a> and in that moment unit is assigned to the newTeam.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">oldTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">newTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitIdle"></a>
+    <strong>UnitIdle(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is idle (empty command queue).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitCommand"></a>
+    <strong>UnitCommand(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOpts, cmdTag)</strong>
+    </dt>
+    <dd>
+    Called after when a unit accepts a command, after <code>AllowCommand</code> returns true.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdParams</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdOpts</span>
+            <span class="types"><a class="type" href="../modules/LuaHandle.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdTag</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitCmdDone"></a>
+    <strong>UnitCmdDone(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOpts, cmdTag)</strong>
+    </dt>
+    <dd>
+    Called when a unit completes a command.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdParams</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdOpts</span>
+            <span class="types"><a class="type" href="../modules/LuaHandle.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdTag</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitDamaged"></a>
+    <strong>UnitDamaged(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is damaged (after UnitPreDamaged).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">damage</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">paralyzer</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">weaponDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">projectileID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">attackerTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitStunned"></a>
+    <strong>UnitStunned(unitID, unitDefID, unitTeam, stunned)</strong>
+    </dt>
+    <dd>
+    Called when a unit changes its stun status.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">stunned</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitExperience"></a>
+    <strong>UnitExperience(unitID, unitDefID, unitTeam, experience, oldExperience)</strong>
+    </dt>
+    <dd>
+    Called when a unit gains experience greater or equal to the minimum limit set by calling <code>Spring.SetExperienceGrade</code>. </p>
+
+<p> Should be called more reliably with small values of experience grade.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">experience</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">oldExperience</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitHarvestStorageFull"></a>
+    <strong>UnitHarvestStorageFull(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit's harvestStorage is full (according to its unitDef's entry).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitSeismicPing"></a>
+    <strong>UnitSeismicPing(x, y, z, strength, allyTeam, unitID, unitDefID)</strong>
+    </dt>
+    <dd>
+    Called when a unit emits a seismic ping. </p>
+
+<p> See <code>seismicSignature</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">strength</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitEnteredRadar"></a>
+    <strong>UnitEnteredRadar(unitID, unitTeam, allyTeam, unitDefID)</strong>
+    </dt>
+    <dd>
+    Called when a unit enters radar of an allyteam. (unitID, unitTeam, allyTeam, unitDefID)</p>
+
+<p> Also called when a unit enters LOS without any radar coverage.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitEnteredLos"></a>
+    <strong>UnitEnteredLos(unitID, unitTeam, allyTeam, unitDefID)</strong>
+    </dt>
+    <dd>
+    Called when a unit enters LOS of an allyteam. </p>
+
+<p> Its called after the unit is in LOS, so you can query that unit.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeam</span>
+            <span class="types"><span class="type">number</span></span>
+         who's LOS the unit entered.
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitLeftRadar"></a>
+    <strong>UnitLeftRadar(unitID, unitTeam, allyTeam, unitDefID)</strong>
+    </dt>
+    <dd>
+    Called when a unit leaves radar of an allyteam. </p>
+
+<p> Also called when a unit leaves LOS without any radar coverage.
+ For widgets, this is called just after a unit leaves radar coverage, so widgets cannot get the position of units that left their radar.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitLeftLos"></a>
+    <strong>UnitLeftLos(unitID, unitTeam, allyTeam, unitDefID)</strong>
+    </dt>
+    <dd>
+    Called when a unit leaves LOS of an allyteam. </p>
+
+<p> For widgets, this one is called just before the unit leaves los, so you can still get the position of a unit that left los.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allyTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Transport"></a>Transport </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "UnitLoaded"></a>
+    <strong>UnitLoaded(unitID, unitDefID, unitTeam, transportID, transportTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is loaded by a transport.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transportID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transportTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitUnloaded"></a>
+    <strong>UnitUnloaded(unitID, unitDefID, unitTeam, transportID, transportTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit is unloaded by a transport.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transportID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transportTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Unit_Interactions"></a>Unit Interactions </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "UnitEnteredWater"></a>
+    <strong>UnitEnteredWater(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitLeftAir"></a>
+    <strong>UnitLeftAir(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitLeftWater"></a>
+    <strong>UnitLeftWater(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitEnteredAir"></a>
+    <strong>UnitEnteredAir(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitCloaked"></a>
+    <strong>UnitCloaked(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit cloaks.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitDecloaked"></a>
+    <strong>UnitDecloaked(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called when a unit decloaks.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitUnitCollision"></a>
+    <strong>UnitUnitCollision(colliderID, collideeID)</strong>
+    </dt>
+    <dd>
+    Called when two units collide. (colliderID, collideeID)</p>
+
+<p> Both units must be registered with <code>Script.SetWatchUnit</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colliderID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">collideeID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitFeatureCollision"></a>
+    <strong>UnitFeatureCollision(colliderID, collideeID)</strong>
+    </dt>
+    <dd>
+    Called when a unit collides with a feature. (colliderID, collideeID)</p>
+
+<p> The unit must be registered with <code>Script.SetWatchUnit</code> and the feature registered with <code>Script.SetWatchFeature</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">colliderID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">collideeID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitMoveFailed"></a>
+    <strong>UnitMoveFailed(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RenderUnitDestroyed"></a>
+    <strong>RenderUnitDestroyed(unitID, unitDefID, unitTeam)</strong>
+    </dt>
+    <dd>
+    Called just before a unit is invalid, after it finishes its death animation.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Draw__Functions"></a>Draw* Functions </h2>
+
+          <div class="section-description">
+           Inside the Draw* functions, you can use the Lua OpenGL Api to draw graphics.</p>
+
+<p> Avoid doing heavy calculations inside these callins; ideally, do the calculations elsewhere and use Draw callins only for drawing.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "DrawGenesis"></a>
+    <strong>DrawGenesis()</strong>
+    </dt>
+    <dd>
+    Use this callin to update textures, shaders, etc. </p>
+
+<p> Doesn't render to screen!
+ Also available to LuaMenu.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorld"></a>
+    <strong>DrawWorld()</strong>
+    </dt>
+    <dd>
+    Spring draws command queues, 'map stuff', and map marks.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorldPreUnit"></a>
+    <strong>DrawWorldPreUnit()</strong>
+    </dt>
+    <dd>
+    Spring draws units, features, some water types, cloaked units, and the sun.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawPreDecals"></a>
+    <strong>DrawPreDecals()</strong>
+    </dt>
+    <dd>
+    Called before decals are drawn
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorldPreParticles"></a>
+    <strong>DrawWorldPreParticles()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorldShadow"></a>
+    <strong>DrawWorldShadow()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorldReflection"></a>
+    <strong>DrawWorldReflection()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawWorldRefraction"></a>
+    <strong>DrawWorldRefraction()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawGroundPreForward"></a>
+    <strong>DrawGroundPreForward()</strong>
+    </dt>
+    <dd>
+    Runs at the start of the forward pass when a custom map shader has been assigned via <code>Spring.SetMapShader</code> (convenient for setting uniforms).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawGroundPostForward"></a>
+    <strong>DrawGroundPostForward()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawGroundPreDeferred"></a>
+    <strong>DrawGroundPreDeferred()</strong>
+    </dt>
+    <dd>
+    Runs at the start of the deferred pass when a custom map shader has been assigned via <code>Spring.SetMapShader</code> (convenient for setting uniforms).
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawGroundDeferred"></a>
+    <strong>DrawGroundDeferred()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawGroundPostDeferred"></a>
+    <strong>DrawGroundPostDeferred()</strong>
+    </dt>
+    <dd>
+    This runs at the end of its respective deferred pass. </p>
+
+<p> Allows proper frame compositing (with ground flashes/decals/foliage/etc, which are drawn between it and <a href="../modules/LuaHandle.html#DrawWorldPreUnit">DrawWorldPreUnit</a>) via <code>gl.CopyToTexture</code>.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawUnitsPostDeferred"></a>
+    <strong>DrawUnitsPostDeferred()</strong>
+    </dt>
+    <dd>
+    Runs at the end of the unit deferred pass. </p>
+
+<p> Informs Lua code it should make use of the $model<em>gbuffer</em>* textures before another pass overwrites them (and to allow proper blending with e.g. cloaked objects which are drawn between these events and DrawWorld via gl.CopyToTexture). N.B. The *PostDeferred events are only sent (and only have a real purpose) if forward drawing is disabled.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawFeaturesPostDeferred"></a>
+    <strong>DrawFeaturesPostDeferred()</strong>
+    </dt>
+    <dd>
+    Runs at the end of the feature deferred pass to inform Lua code it should make use of the $model<em>gbuffer</em>* textures before another pass overwrites them (and to allow proper blending with e.g.  cloaked objects which are drawn between these events and DrawWorld via gl.CopyToTexture). N.B. The *PostDeferred events are only sent (and only have a real purpose) if forward drawing is disabled.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawShadowUnitsLua"></a>
+    <strong>DrawShadowUnitsLua()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawShadowFeaturesLua"></a>
+    <strong>DrawShadowFeaturesLua()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawScreen"></a>
+    <strong>DrawScreen(viewSizeX, viewSizeY)</strong>
+    </dt>
+    <dd>
+    Also available to LuaMenu.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">viewSizeX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">viewSizeY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawScreenEffects"></a>
+    <strong>DrawScreenEffects(viewSizeX, viewSizeY)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">viewSizeX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">viewSizeY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawScreenPost"></a>
+    <strong>DrawScreenPost(viewSizeX, viewSizeY)</strong>
+    </dt>
+    <dd>
+    Similar to DrawScreenEffects, this can be used to alter the contents of a frame after it has been completely rendered (i.e.  World, MiniMap, Menu, UI).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">viewSizeX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">viewSizeY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawInMinimap"></a>
+    <strong>DrawInMinimap(sx, sy)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sx</span>
+            <span class="types"><span class="type">number</span></span>
+         relative to the minimap's position and scale.
+        </li>
+        <li><span class="parameter">sy</span>
+            <span class="types"><span class="type">number</span></span>
+         relative to the minimap's position and scale.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawInMinimapBackground"></a>
+    <strong>DrawInMinimapBackground(sx, sy)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sx</span>
+            <span class="types"><span class="type">number</span></span>
+         relative to the minimap's position and scale.
+        </li>
+        <li><span class="parameter">sy</span>
+            <span class="types"><span class="type">number</span></span>
+         relative to the minimap's position and scale.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameProgress"></a>
+    <strong>GameProgress(serverFrameNum)</strong>
+    </dt>
+    <dd>
+    Called every 60 frames, calculating delta between <a href="../modules/LuaHandle.html#GameFrame">GameFrame</a> and <a href="../modules/LuaHandle.html#GameProgress">GameProgress</a>. </p>
+
+<p> Can give an ETA about catching up with simulation for mid-game join players.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">serverFrameNum</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "KeyPress"></a>
+    <strong>KeyPress(keyCode)</strong>
+    </dt>
+    <dd>
+    Called repeatedly when a key is pressed down. </p>
+
+<p> If you want an action to occur only once check for isRepeat == false. The mods parameter is a table, with keys "alt", "ctrl", "meta" and "shift" each having a boolean value. Return true if you don't want other callins or the engine to also receive this keypress. A list of key codes can be seen at the SDL wiki.
+(key, mods, isRepeat)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keyCode</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        becomeOwner
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Input"></a>Input </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "mods"></a>
+    <strong>mods</strong>
+    </dt>
+    <dd>
+    Key Modifier Params
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">right</span>
+            <span class="types"><span class="type">bool</span></span>
+         Right mouse key pressed
+        </li>
+        <li><span class="parameter">alt</span>
+            <span class="types"><span class="type">bool</span></span>
+         Alt key pressed
+        </li>
+        <li><span class="parameter">ctrl</span>
+            <span class="types"><span class="type">bool</span></span>
+         Ctrl key pressed
+        </li>
+        <li><span class="parameter">shift</span>
+            <span class="types"><span class="type">bool</span></span>
+         Shift key pressed
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "KeyPress"></a>
+    <strong>KeyPress(keyCode, mods, isRepeat, label, utf32char, scanCode, actionList)</strong>
+    </dt>
+    <dd>
+    Called repeatedly when a key is pressed down. </p>
+
+<p> Return true if you don't want other callins or the engine to also receive this keypress. A list of key codes can be seen at the SDL wiki.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keyCode</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">mods</span>
+            <span class="types"><a class="type" href="../modules/LuaHandle.html#mods">mods</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">isRepeat</span>
+            <span class="types"><span class="type">bool</span></span>
+         If you want an action to occur only once check for isRepeat == false.
+        </li>
+        <li><span class="parameter">label</span>
+            <span class="types"><span class="type">bool</span></span>
+         the name of the key
+        </li>
+        <li><span class="parameter">utf32char</span>
+            <span class="types"><span class="type">number</span></span>
+         (deprecated) always 0
+        </li>
+        <li><span class="parameter">scanCode</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">actionList</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         the list of actions for this keypress
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        halt whether to halt the chain for consumers of the keypress
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "KeyRelease"></a>
+    <strong>KeyRelease(keyCode, mods, label, utf32char, scanCode, actionList)</strong>
+    </dt>
+    <dd>
+    Called when the key is released.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">keyCode</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">mods</span>
+            <span class="types"><a class="type" href="../modules/LuaHandle.html#mods">mods</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">label</span>
+            <span class="types"><span class="type">bool</span></span>
+         the name of the key
+        </li>
+        <li><span class="parameter">utf32char</span>
+            <span class="types"><span class="type">number</span></span>
+         (deprecated) always 0
+        </li>
+        <li><span class="parameter">scanCode</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">actionList</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         the list of actions for this keyrelease
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TextInput"></a>
+    <strong>TextInput(utf8char)</strong>
+    </dt>
+    <dd>
+    Called whenever a key press results in text input.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8char</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TextEditing"></a>
+    <strong>TextEditing(utf8, start, length)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">utf8</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">start</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">length</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MousePress"></a>
+    <strong>MousePress(x, y, button)</strong>
+    </dt>
+    <dd>
+    Called when a mouse button is pressed. </p>
+
+<p> The button parameter supports up to 7 buttons. Must return true for <a href="../modules/LuaHandle.html#MouseRelease">MouseRelease</a> and other functions to be called.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">button</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        becomeMouseOwner
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MouseRelease"></a>
+    <strong>MouseRelease(x, y, button)</strong>
+    </dt>
+    <dd>
+    Called when a mouse button is released. </p>
+
+<p> Please note that in order to have Spring call <code>Spring.MouseRelease</code>, you need to have a <code>Spring.MousePress</code> call-in in the same addon that returns true.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">button</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        becomeMouseOwner
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MouseMove"></a>
+    <strong>MouseMove(x, y, dx, dy, button)</strong>
+    </dt>
+    <dd>
+    Called when the mouse is moved.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+         final x position
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+         final y position
+        </li>
+        <li><span class="parameter">dx</span>
+            <span class="types"><span class="type">number</span></span>
+         distance travelled in x
+        </li>
+        <li><span class="parameter">dy</span>
+            <span class="types"><span class="type">number</span></span>
+         distance travelled in y
+        </li>
+        <li><span class="parameter">button</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MouseWheel"></a>
+    <strong>MouseWheel(up, value)</strong>
+    </dt>
+    <dd>
+    Called when the mouse wheel is moved.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">up</span>
+            <span class="types"><span class="type">bool</span></span>
+         the direction
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">number</span></span>
+         the amount travelled
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsAbove"></a>
+    <strong>IsAbove(x, y)</strong>
+    </dt>
+    <dd>
+    Called every <a href="../modules/LuaHandle.html#Update">Update</a>. </p>
+
+<p> Must return true for <code>Mouse*</code> events and <code>Spring.GetToolTip</code> to be called.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean isAbove
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetTooltip"></a>
+    <strong>GetTooltip(x, y)</strong>
+    </dt>
+    <dd>
+    Called when <code>Spring.IsAbove</code> returns true.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string tooltip
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cmdOpts"></a>
+    <strong>cmdOpts</strong>
+    </dt>
+    <dd>
+    Parameters for command options
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">coded</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">alt</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ctrl</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">shift</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">right</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">meta</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">internal</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CommandNotify"></a>
+    <strong>CommandNotify(cmdID, cmdParams, cmdOpts)</strong>
+    </dt>
+    <dd>
+    Called when a command is issued.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdParams</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdOpts</span>
+            <span class="types"><a class="type" href="../modules/LuaHandle.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        Returning true deletes the command and does not send it through the network.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AddConsoleLine"></a>
+    <strong>AddConsoleLine(msg, priority)</strong>
+    </dt>
+    <dd>
+    Called when text is entered into the console (e.g.  <code>Spring.Echo</code>).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">msg</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">priority</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GroupChanged"></a>
+    <strong>GroupChanged(groupID)</strong>
+    </dt>
+    <dd>
+    Called when a unit is added to or removed from a control group.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">groupID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WorldTooltip"></a>
+    <strong>WorldTooltip(ttType, data1[, data2[, data3]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ttType</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         "unit" | "feature" | "ground" | "selection"
+        </li>
+        <li><span class="parameter">data1</span>
+            <span class="types"><span class="type">number</span></span>
+         unitID | featureID | posX
+        </li>
+        <li><span class="parameter">data2</span>
+            <span class="types"><span class="type">number</span></span>
+         posY
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">data3</span>
+            <span class="types"><span class="type">number</span></span>
+         posZ
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        newTooltip
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MapDrawCmd"></a>
+    <strong>MapDrawCmd(playerID, type, posX, posY, posZ, data4[, pos2Y[, pos2Z]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         "point" | "line" | "erase"
+        </li>
+        <li><span class="parameter">posX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">posY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">posZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">data4</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+         point: label, erase: radius, line: pos2X
+        </li>
+        <li><span class="parameter">pos2Y</span>
+            <span class="types"><span class="type">number</span></span>
+         when type is line
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">pos2Z</span>
+            <span class="types"><span class="type">number</span></span>
+         when type is line
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GameSetup"></a>
+    <strong>GameSetup(state, ready, playerStates)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">ready</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">playerStates</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">bool</span></span>
+        success</li>
+        <li>
+           <span class="types"><span class="type">bool</span></span>
+        newReady</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RecvSkirmishAIMessage"></a>
+    <strong>RecvSkirmishAIMessage(aiTeam, dataStr)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">aiTeam</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">dataStr</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Downloads"></a>Downloads </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "DownloadQueued"></a>
+    <strong>DownloadQueued(id, name, type)</strong>
+    </dt>
+    <dd>
+    Called when a Pr-downloader download is queued
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DownloadStarted"></a>
+    <strong>DownloadStarted(id)</strong>
+    </dt>
+    <dd>
+    Called when a Pr-downloader download is started via VFS.DownloadArchive.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DownloadFinished"></a>
+    <strong>DownloadFinished(id)</strong>
+    </dt>
+    <dd>
+    Called when a Pr-downloader download finishes successfully.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DownloadFailed"></a>
+    <strong>DownloadFailed(id, errorID)</strong>
+    </dt>
+    <dd>
+    Called when a Pr-downloader download fails to complete.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">errorID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DownloadProgress"></a>
+    <strong>DownloadProgress(id, downloaded, total)</strong>
+    </dt>
+    <dd>
+    Called incrementally during a Pr-downloader download.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">downloaded</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">total</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

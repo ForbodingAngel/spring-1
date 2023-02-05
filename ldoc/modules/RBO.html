@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><strong>RBO</strong></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>RBO</code></h1>
+<p>RBO</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaRBOs.cpp">rts/Lua/LuaRBOs.cpp</a>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#gl.CreateRBO">gl.CreateRBO(xsize, ysize, data)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.DeleteRBO">gl.DeleteRBO(rbo)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#rbo">rbo</a></td>
+	<td class="summary">User Data RBO</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "gl.CreateRBO"></a>
+    <strong>gl.CreateRBO(xsize, ysize, data)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">xsize</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ysize</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">data</span>
+
+
+        <ul>
+        <li><span class="parameter">target</span>
+            <span class="types"><span class="type">number</span></span>
+         <code>GL_RENDERBUFFER_EXT</code>
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><span class="type">number</span></span>
+         <code>GL_RGBA</code>
+        </li>
+        <li><span class="parameter">samples</span>
+            <span class="types"><span class="type">number</span></span>
+         any number here will result in creation of multisampled RBO
+         (<em>optional</em>)
+        </li>
+        </li></ul>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.DeleteRBO"></a>
+    <strong>gl.DeleteRBO(rbo)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">rbo</span>
+            <span class="types"><a class="type" href="../modules/RBO.html#rbo">rbo</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "rbo"></a>
+    <strong>rbo</strong>
+    </dt>
+    <dd>
+    User Data RBO
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">target</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">format</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">xsize</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ysize</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">valid</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">samples</span>
+            <span class="types"><span class="type">number</span></span>
+         will return globalRendering->msaaLevel for multisampled RBO or 0 otherwise
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

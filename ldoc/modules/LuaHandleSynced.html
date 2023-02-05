@@ -1,0 +1,743 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Custom_Object_Rendering">Custom Object Rendering </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><strong>LuaHandleSynced</strong></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>LuaHandleSynced</code></h1>
+<p>Callins, functions called by the Engine (Synced)</p>
+<p>
+
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaHandleSynced.cpp">rts/Lua/LuaHandleSynced.cpp</a>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#RecvFromSynced">RecvFromSynced()</a></td>
+	<td class="summary">Receives data sent via <code>SendToUnsynced</code> callout.</td>
+	</tr>
+</table>
+<h2><a href="#Custom_Object_Rendering">Custom Object Rendering </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#DrawUnit">DrawUnit()</a></td>
+	<td class="summary">For custom rendering of units, enabled here.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawFeature">DrawFeature()</a></td>
+	<td class="summary">For custom rendering of features, enabled here.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawShield">DrawShield()</a></td>
+	<td class="summary">For custom rendering of shields.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DrawProjectile">DrawProjectile()</a></td>
+	<td class="summary">For custom rendering of weapon (&amp; other) projectiles, enabled here.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CommandFallback">CommandFallback()</a></td>
+	<td class="summary">Called when the unit reaches an unknown command in its queue (i.e.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowCommand">AllowCommand()</a></td>
+	<td class="summary">Called when the command is given, before the unit's queue is altered.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowUnitCreation">AllowUnitCreation()</a></td>
+	<td class="summary">Called just before unit is created.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowUnitTransfer">AllowUnitTransfer()</a></td>
+	<td class="summary">Called just before a unit is transferred to a different team.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowUnitBuildStep">AllowUnitBuildStep()</a></td>
+	<td class="summary">Called just before a unit progresses its build percentage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowFeatureCreation">AllowFeatureCreation()</a></td>
+	<td class="summary">Called just before feature is created.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowFeatureBuildStep">AllowFeatureBuildStep()</a></td>
+	<td class="summary">Called just before a feature changes its build percentage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowResourceLevel">AllowResourceLevel()</a></td>
+	<td class="summary">Called when a team sets the sharing level of a resource.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowResourceTransfer">AllowResourceTransfer()</a></td>
+	<td class="summary">Called just before resources are transferred between players.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowDirectUnitControl">AllowDirectUnitControl()</a></td>
+	<td class="summary">Determines if this unit can be controlled directly in FPS view.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowBuilderHoldFire">AllowBuilderHoldFire()</a></td>
+	<td class="summary">Called when a construction unit wants to "use his nano beams".</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowStartPosition">AllowStartPosition()</a></td>
+	<td class="summary">Whether a start position should be allowed</p>
+
+<p> clamped{X,Y,Z} are the coordinates clamped into start-boxes, raw is where player tried to place their marker.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MoveCtrlNotify">MoveCtrlNotify()</a></td>
+	<td class="summary">Enable both Spring.MoveCtrl.SetCollideStop and Spring.MoveCtrl.SetTrackGround to enable this call-in.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TerraformComplete">TerraformComplete()</a></td>
+	<td class="summary">Called when pre-building terrain levelling terraforms are completed (c.f.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitPreDamaged">UnitPreDamaged()</a></td>
+	<td class="summary">Called before damage is applied to the unit, allows fine control over how much damage and impulse is applied.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FeaturePreDamaged">FeaturePreDamaged()</a></td>
+	<td class="summary">Called before damage is applied to the feature, allows fine control over how much damage and impulse is applied.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ShieldPreDamaged">ShieldPreDamaged()</a></td>
+	<td class="summary">Called before any engine shield-vs-projectile logic executes.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowWeaponTargetCheck">AllowWeaponTargetCheck()</a></td>
+	<td class="summary">Determines if this weapon can automatically generate targets itself.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowWeaponTarget">AllowWeaponTarget()</a></td>
+	<td class="summary">Controls blocking of a specific target from being considered during a weapon's periodic auto-targeting sweep.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AllowWeaponInterceptTarget">AllowWeaponInterceptTarget()</a></td>
+	<td class="summary">Controls blocking of a specific intercept target from being considered during an interceptor weapon's periodic auto-targeting sweep.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "RecvFromSynced"></a>
+    <strong>RecvFromSynced()</strong>
+    </dt>
+    <dd>
+    Receives data sent via <code>SendToUnsynced</code> callout.
+
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Custom_Object_Rendering"></a>Custom Object Rendering </h2>
+
+          <div class="section-description">
+           For the following calls drawMode can be one of the following, notDrawing = 0, normalDraw = 1, shadowDraw = 2, reflectionDraw = 3, refractionDraw = 4, and finally gameDeferredDraw = 5 which was added in 102.0.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "DrawUnit"></a>
+    <strong>DrawUnit()</strong>
+    </dt>
+    <dd>
+    For custom rendering of units, enabled here. (unitID, drawMode)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean suppressEngineDraw
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawFeature"></a>
+    <strong>DrawFeature()</strong>
+    </dt>
+    <dd>
+    For custom rendering of features, enabled here. (unitID, drawMode)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean suppressEngineDraw
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawShield"></a>
+    <strong>DrawShield()</strong>
+    </dt>
+    <dd>
+    For custom rendering of shields. (unitID, weaponID, drawMode)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean suppressEngineDraw
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DrawProjectile"></a>
+    <strong>DrawProjectile()</strong>
+    </dt>
+    <dd>
+    For custom rendering of weapon (&amp; other) projectiles, enabled here. (projectileID, drawMode)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean suppressEngineDraw
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CommandFallback"></a>
+    <strong>CommandFallback()</strong>
+    </dt>
+    <dd>
+    Called when the unit reaches an unknown command in its queue (i.e.  one not handled by the engine).</p>
+
+<p> If no addon returns used as true the command is dropped, if an addon returns true, true the command is removed because it's done, with true, false it's kept in the queue and CommandFallback gets called again on the next slowupdate.
+(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions, cmdTag)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean used, boolean finished
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowCommand"></a>
+    <strong>AllowCommand()</strong>
+    </dt>
+    <dd>
+    Called when the command is given, before the unit's queue is altered. </p>
+
+<p> The queue remains untouched when a command is blocked, whether it would be queued or replace the queue.
+(unitID, unitDefID, unitTeam, cmdID, cmdParams, cmdOptions, cmdTag, synced)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether it should be let into the queue.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowUnitCreation"></a>
+    <strong>AllowUnitCreation()</strong>
+    </dt>
+    <dd>
+    Called just before unit is created. (unitDefID, builderID, builderTeam, x, y, z, facing)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the creation is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowUnitTransfer"></a>
+    <strong>AllowUnitTransfer()</strong>
+    </dt>
+    <dd>
+    Called just before a unit is transferred to a different team. (unitID, unitDefID, oldTeam, newTeam, capture)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the transfer is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowUnitBuildStep"></a>
+    <strong>AllowUnitBuildStep()</strong>
+    </dt>
+    <dd>
+    Called just before a unit progresses its build percentage. (builderID, builderTeam, unitID, unitDefID, part)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the build makes progress.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowFeatureCreation"></a>
+    <strong>AllowFeatureCreation()</strong>
+    </dt>
+    <dd>
+    Called just before feature is created. (featureDefID, teamID, x, y, z)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the creation is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowFeatureBuildStep"></a>
+    <strong>AllowFeatureBuildStep()</strong>
+    </dt>
+    <dd>
+    Called just before a feature changes its build percentage. </p>
+
+<p> Note that this is also called for resurrecting features, and for refilling features with resources before resurrection.
+ On reclaim the part values are negative, and on refill and ressurect they are positive.
+ Part is the percentage the feature be built or reclaimed per frame.
+ Eg. for a 30 workertime builder, that's a build power of 1 per frame.
+ For a 50 buildtime feature reclaimed by this builder, part will be 100/-50(/1) = -2%, or -0.02 numerically.
+(builderID, builderTeam, featureID, featureDefID, part)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the change is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowResourceLevel"></a>
+    <strong>AllowResourceLevel()</strong>
+    </dt>
+    <dd>
+    Called when a team sets the sharing level of a resource. (teamID, res, level)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the sharing level is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowResourceTransfer"></a>
+    <strong>AllowResourceTransfer()</strong>
+    </dt>
+    <dd>
+    Called just before resources are transferred between players. (oldTeamID, newTeamID, res, amount)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow whether or not the transfer is permitted.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowDirectUnitControl"></a>
+    <strong>AllowDirectUnitControl()</strong>
+    </dt>
+    <dd>
+    Determines if this unit can be controlled directly in FPS view. (unitID, unitDefID, unitTeam, playerID)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowBuilderHoldFire"></a>
+    <strong>AllowBuilderHoldFire()</strong>
+    </dt>
+    <dd>
+    Called when a construction unit wants to "use his nano beams". </p>
+
+<pre><code> action is one of following:
+
+ -1 Build
+ CMD.REPAIR Repair
+ CMD.RECLAIM Reclaim
+ CMD.RESTORE Restore
+ CMD.RESURRECT Resurrect
+ CMD.CAPTURE Capture
+</code></pre>
+<p>(unitID, unitDefID, action)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean actionAllowed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowStartPosition"></a>
+    <strong>AllowStartPosition()</strong>
+    </dt>
+    <dd>
+    Whether a start position should be allowed</p>
+
+<p> clamped{X,Y,Z} are the coordinates clamped into start-boxes, raw is where player tried to place their marker. </p>
+
+<p> The readyState can be any one of:</p>
+
+<pre><code> 0 - player picked a position,
+ 1 - player clicked ready,
+ 2 - player pressed ready OR the game was force-started (player did not click ready, but is now forcibly readied) or
+ 3 - the player failed to load.
+ The default 'failed to choose' start-position is the north-west point of their startbox, or (0,0,0) if they do not have a startbox.
+</code></pre>
+
+<p> NB: The order of the parameters changed with the addition of teamID in 104.0. Previouly it was: clampedX, clampedY, clampedZ, playerID, readyState, rawX, rawY, rawZ
+(playerID, teamID, readyState, clampedX, clampedY, clampedZ, rawX, rawY, rawZ)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allow
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MoveCtrlNotify"></a>
+    <strong>MoveCtrlNotify()</strong>
+    </dt>
+    <dd>
+    Enable both Spring.MoveCtrl.SetCollideStop and Spring.MoveCtrl.SetTrackGround to enable this call-in. </p>
+
+<p> data was supposed to indicate the type of notification but currently never has a value other than 1 ("unit hit the ground").
+(unitID, unitDefID, unitTeam, data)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean moveCtrlComplete whether or not the unit should remain script-controlled (false) or return to engine controlled movement (true).
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TerraformComplete"></a>
+    <strong>TerraformComplete()</strong>
+    </dt>
+    <dd>
+    Called when pre-building terrain levelling terraforms are completed (c.f.  levelGround)
+(unitID, unitDefID, unitTeam, buildUnitID, buildUnitDefID, buildUnitTeam)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        stop if true the current build order is terminated.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitPreDamaged"></a>
+    <strong>UnitPreDamaged()</strong>
+    </dt>
+    <dd>
+    Called before damage is applied to the unit, allows fine control over how much damage and impulse is applied. </p>
+
+<p> Called after every damage modification (even <code>HitByWeaponId</code>) but before the damage is applied</p>
+
+<p> expects two numbers returned by lua code:
+ 1st is stored under *newDamage if newDamage != NULL
+ 2nd is stored under *impulseMult if impulseMult != NULL
+(unitID, unitDefID, unitTeam, damage, paralyzer, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number newDamage, number impulseMult
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FeaturePreDamaged"></a>
+    <strong>FeaturePreDamaged()</strong>
+    </dt>
+    <dd>
+    Called before damage is applied to the feature, allows fine control over how much damage and impulse is applied. (featureID, featureDefID, featureTeam, damage, weaponDefID, projectileID, attackerID, attackerDefID, attackerTeam)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        number newDamage, number impulseMult
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ShieldPreDamaged"></a>
+    <strong>ShieldPreDamaged()</strong>
+    </dt>
+    <dd>
+    Called before any engine shield-vs-projectile logic executes. </p>
+
+<p> If the return value is true the gadget handles the collision event and the engine does not remove the projectile. If the weapon is a hitscan type (BeamLaser or LightningCanon) then proID is nil and beamEmitterWeaponNum and beamEmitterUnitID are populated instead. The start and hit position arguments are provided from 104.0 onwards.
+(proID, shieldCarrier, boolBounceProjectile, beamEmitterWeaponNum, beamEmitterUnitID, startX, startY, startZ, hitX, hitY, hitZ)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean handleCollision
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowWeaponTargetCheck"></a>
+    <strong>AllowWeaponTargetCheck()</strong>
+    </dt>
+    <dd>
+    Determines if this weapon can automatically generate targets itself.  See also commandFire weaponDef tag.</p>
+
+<p> The ignoreCheck return value was added in 99.0 to allow ignoring the callin i.e. running normal engine check for this weapon.
+(attackerID, attackerWeaponNum, attackerWeaponDefID)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allowCheck, boolean ignoreCheck
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowWeaponTarget"></a>
+    <strong>AllowWeaponTarget()</strong>
+    </dt>
+    <dd>
+    Controls blocking of a specific target from being considered during a weapon's periodic auto-targeting sweep. </p>
+
+<p> The second return value is the new priority for this target (if you don't want to change it, return defPriority). Lower priority targets are targeted first.
+(attackerID, targetID, attackerWeaponNum, attackerWeaponDefID, defPriority)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allowed, number newPriority
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AllowWeaponInterceptTarget"></a>
+    <strong>AllowWeaponInterceptTarget()</strong>
+    </dt>
+    <dd>
+    Controls blocking of a specific intercept target from being considered during an interceptor weapon's periodic auto-targeting sweep. </p>
+
+<p> Only called for weaponDefIDs registered via Script.SetWatchWeapon.
+(interceptorUnitID, interceptorWeaponID, targetProjectileID)
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        boolean allowed
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

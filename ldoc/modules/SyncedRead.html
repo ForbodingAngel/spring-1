@@ -1,0 +1,1301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Teams">Teams </a></li>
+<li><a href="#Game_States">Game States </a></li>
+<li><a href="#Speed_Time">Speed/Time </a></li>
+<li><a href="#Environment">Environment </a></li>
+<li><a href="#Rules_Params">Rules/Params </a></li>
+<li><a href="#Mod_and_Map_options">Mod and Map options </a></li>
+<li><a href="#Vectors">Vectors </a></li>
+<li><a href="#Sides_and_Factions">Sides and Factions </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><strong>SyncedRead</strong></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>SyncedRead</code></h1>
+<p>Synced Read</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaSyncedRead.cpp">rts/Lua/LuaSyncedRead.cpp</a>
+    </ul>
+
+
+<h2><a href="#Teams">Teams </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGaiaTeamID">Spring.GetGaiaTeamID()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetAllyTeamStartBox">Spring.GetAllyTeamStartBox(allyID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetTeamStartPosition">Spring.GetTeamStartPosition(teamID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Game_States">Game States </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsCheatingEnabled">Spring.IsCheatingEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsGodModeEnabled">Spring.IsGodModeEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsDevLuaEnabled">Spring.IsDevLuaEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsEditDefsEnabled">Spring.IsEditDefsEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsNoCostEnabled">Spring.IsNoCostEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGlobalLos">Spring.GetGlobalLos([teamID])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AreHelperAIsEnabled">Spring.AreHelperAIsEnabled()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.FixedAllies">Spring.FixedAllies()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.IsGameOver">Spring.IsGameOver()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Speed_Time">Speed/Time </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGameFrame">Spring.GetGameFrame()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGameSeconds">Spring.GetGameSeconds()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Environment">Environment </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetTidal">Spring.GetTidal()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetWind">Spring.GetWind()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Rules_Params">Rules/Params </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGameRulesParams">Spring.GetGameRulesParams()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetTeamRulesParams">Spring.GetTeamRulesParams(teamID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetUnitRulesParams">Spring.GetUnitRulesParams(unitID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetFeatureRulesParams">Spring.GetFeatureRulesParams(featureID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetGameRulesParam">Spring.GetGameRulesParam(ruleRef)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetTeamRulesParam">Spring.GetTeamRulesParam(teamID, ruleRef)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetUnitRulesParam">Spring.GetUnitRulesParam(unitID, ruleRef)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetFeatureRulesParam">Spring.GetFeatureRulesParam(featureID, ruleRef)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Mod_and_Map_options">Mod and Map options </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetMapOptions">Spring.GetMapOptions()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetModOptions">Spring.GetModOptions()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Vectors">Vectors </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetHeadingFromVector">Spring.GetHeadingFromVector(x, z)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetVectorFromHeading">Spring.GetVectorFromHeading(heading)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Sides_and_Factions">Sides and Factions </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#sideSpec">sideSpec</a></td>
+	<td class="summary">Side spec</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetSideData">Spring.GetSideData(sideName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetSideData">Spring.GetSideData(sideID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GetSideData">Spring.GetSideData()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Teams"></a>Teams </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetGaiaTeamID"></a>
+    <strong>Spring.GetGaiaTeamID()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        teamID
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetAllyTeamStartBox"></a>
+    <strong>Spring.GetAllyTeamStartBox(allyID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">allyID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        xMin</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        zMin</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        xMax</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        zMax</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetTeamStartPosition"></a>
+    <strong>Spring.GetTeamStartPosition(teamID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        x</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        y</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        x</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Game_States"></a>Game States </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.IsCheatingEnabled"></a>
+    <strong>Spring.IsCheatingEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.IsGodModeEnabled"></a>
+    <strong>Spring.IsGodModeEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.IsDevLuaEnabled"></a>
+    <strong>Spring.IsDevLuaEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.IsEditDefsEnabled"></a>
+    <strong>Spring.IsEditDefsEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.IsNoCostEnabled"></a>
+    <strong>Spring.IsNoCostEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetGlobalLos"></a>
+    <strong>Spring.GetGlobalLos([teamID])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.AreHelperAIsEnabled"></a>
+    <strong>Spring.AreHelperAIsEnabled()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.FixedAllies"></a>
+    <strong>Spring.FixedAllies()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span> or <span class="type">nil</span></span>
+        enabled
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.IsGameOver"></a>
+    <strong>Spring.IsGameOver()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        isGameOver
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Speed_Time"></a>Speed/Time </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetGameFrame"></a>
+    <strong>Spring.GetGameFrame()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        t1 frameNum % dayFrames</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        t2 frameNum / dayFrames</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetGameSeconds"></a>
+    <strong>Spring.GetGameSeconds()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        seconds
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Environment"></a>Environment </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetTidal"></a>
+    <strong>Spring.GetTidal()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        tidalStrength
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetWind"></a>
+    <strong>Spring.GetWind()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        windStrength
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Rules_Params"></a>Rules/Params </h2>
+
+          <div class="section-description">
+
+
+
+<p> The following functions allow to save data per game, team and unit.
+ The advantage of it is that it can be read from anywhere (even from LuaUI and AIs!)</p>
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetGameRulesParams"></a>
+    <strong>Spring.GetGameRulesParams()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = number,...} rulesParams map with rules names as key and values as values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetTeamRulesParams"></a>
+    <strong>Spring.GetTeamRulesParams(teamID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = number,...} rulesParams map with rules names as key and values as values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetUnitRulesParams"></a>
+    <strong>Spring.GetUnitRulesParams(unitID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = number,...} rulesParams map with rules names as key and values as values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetFeatureRulesParams"></a>
+    <strong>Spring.GetFeatureRulesParams(featureID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = number,...} rulesParams map with rules names as key and values as values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetGameRulesParam"></a>
+    <strong>Spring.GetGameRulesParam(ruleRef)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ruleRef</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the rule index or name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span>, <span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetTeamRulesParam"></a>
+    <strong>Spring.GetTeamRulesParam(teamID, ruleRef)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ruleRef</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the rule index or name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span>, <span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetUnitRulesParam"></a>
+    <strong>Spring.GetUnitRulesParam(unitID, ruleRef)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ruleRef</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the rule index or name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span>, <span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        value
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetFeatureRulesParam"></a>
+    <strong>Spring.GetFeatureRulesParam(featureID, ruleRef)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ruleRef</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the rule index or name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span>, <span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        value
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Mod_and_Map_options"></a>Mod and Map options </h2>
+
+          <div class="section-description">
+
+
+
+<p> <em>Warning</em>: boolean values are not transfered from C to Lua correctly.
+ For this reason the respective option has to be converted to a number
+ and checked accordingly via an IF statement as shown below:</p>
+
+<pre><code> if (tonumber(Spring.GetModOptions.exampleOption) == 1) then...end
+</code></pre>
+
+<p> The following check therefore is insufficient!</p>
+
+<pre><code> if (Spring.GetModOptions.exampleOption) then...end
+</code></pre>
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetMapOptions"></a>
+    <strong>Spring.GetMapOptions()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = string,...} options map with options names as keys and values as values
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetModOptions"></a>
+    <strong>Spring.GetModOptions()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">{[string]</a></span>
+        = string,...} options map with options names as keys and values as values
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Vectors"></a>Vectors </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.GetHeadingFromVector"></a>
+    <strong>Spring.GetHeadingFromVector(x, z)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        heading
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetVectorFromHeading"></a>
+    <strong>Spring.GetVectorFromHeading(heading)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">heading</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        x</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        z</li>
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Sides_and_Factions"></a>Sides and Factions </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "sideSpec"></a>
+    <strong>sideSpec</strong>
+    </dt>
+    <dd>
+    Side spec </p>
+
+<p> Used when returning arrays of side specifications, is itself an array with
+ positional values as below:
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">caseName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">startUnit</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetSideData"></a>
+    <strong>Spring.GetSideData(sideName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        startUnit</li>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        caseSensitiveSideName</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetSideData"></a>
+    <strong>Spring.GetSideData(sideID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        sideName</li>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        startUnit</li>
+        <li>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        caseSensitiveSideName</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GetSideData"></a>
+    <strong>Spring.GetSideData()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/SyncedRead.html#sideSpec">{[sideSpec],...}</a></span>
+        sideArray
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

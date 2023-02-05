@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><strong>FBO</strong></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>FBO</code></h1>
+<p>FBO</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaFBOs.cpp">rts/Lua/LuaFBOs.cpp</a>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#gl.CreateFBO">gl.CreateFBO(data)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.DeleteFBO">gl.DeleteFBO(fbo)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.IsValidFBO">gl.IsValidFBO(fbo[, target])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.ActiveFBO">gl.ActiveFBO(fbo[, target[, identities[, lua_function[, arg1[, arg2[, argn]]]]]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.BlitFBO">gl.BlitFBO(x0Src, y0Src, x1Src, y1Src, x0Dst, y0Dst, x1Dst, y1Dst[, mask=GL_COLOR_BUFFER_BIT[, filter=GL_NEAREST]])</a></td>
+	<td class="summary">needs <code>GLEW_EXT_framebuffer_blit</code></td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#gl.BlitFBO">gl.BlitFBO(fboSrc, x0Src, y0Src, x1Src, y1Src, fboDst, x0Dst, y0Dst, x1Dst, y1Dst[, mask=GL_COLOR_BUFFER_BIT[, filter=GL_NEAREST]])</a></td>
+	<td class="summary">needs <code>GLEW_EXT_framebuffer_blit</code></td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#attachment">attachment</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#fbo">fbo</a></td>
+	<td class="summary">User Data FBO</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "gl.CreateFBO"></a>
+    <strong>gl.CreateFBO(data)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+
+
+        <ul>
+        <li><span class="parameter">depth</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">stencil</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color0</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">colorn</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color15</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawbuffers</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         <code>{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT3_EXT, ..}</code>
+        </li>
+        </li></ul>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.DeleteFBO"></a>
+    <strong>gl.DeleteFBO(fbo)</strong>
+    </dt>
+    <dd>
+     This doesn't delete the attached objects!
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fbo</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#fbo">fbo</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.IsValidFBO"></a>
+    <strong>gl.IsValidFBO(fbo[, target])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fbo</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#fbo">fbo</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">target</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">bool</span></span>
+        valid</li>
+        <li>
+           <span class="types">optional <span class="type">number</span></span>
+        status</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.ActiveFBO"></a>
+    <strong>gl.ActiveFBO(fbo[, target[, identities[, lua_function[, arg1[, arg2[, argn]]]]]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fbo</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#fbo">fbo</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">target</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">identities</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">lua_function</span>
+            <span class="types"><span class="type">func</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">arg1</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">arg2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">argn</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.BlitFBO"></a>
+    <strong>gl.BlitFBO(x0Src, y0Src, x1Src, y1Src, x0Dst, y0Dst, x1Dst, y1Dst[, mask=GL_COLOR_BUFFER_BIT[, filter=GL_NEAREST]])</strong>
+    </dt>
+    <dd>
+    needs <code>GLEW_EXT_framebuffer_blit</code>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x0Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y0Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x1Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y1Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x0Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y0Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x1Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y1Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">mask</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> GL_COLOR_BUFFER_BIT)
+        </li>
+        <li><span class="parameter">filter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> GL_NEAREST)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "gl.BlitFBO"></a>
+    <strong>gl.BlitFBO(fboSrc, x0Src, y0Src, x1Src, y1Src, fboDst, x0Dst, y0Dst, x1Dst, y1Dst[, mask=GL_COLOR_BUFFER_BIT[, filter=GL_NEAREST]])</strong>
+    </dt>
+    <dd>
+    needs <code>GLEW_EXT_framebuffer_blit</code>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fboSrc</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#fbo">fbo</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">x0Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y0Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x1Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y1Src</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fboDst</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#fbo">fbo</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">x0Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y0Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x1Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y1Dst</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">mask</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> GL_COLOR_BUFFER_BIT)
+        </li>
+        <li><span class="parameter">filter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> GL_NEAREST)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "attachment"></a>
+    <strong>attachment</strong>
+    </dt>
+    <dd>
+     attachment ::= luaTex or <a href="../modules/RBO.html#rbo">RBO.rbo</a> or nil or { luaTex [, num target [, num level ] ] }
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "fbo"></a>
+    <strong>fbo</strong>
+    </dt>
+    <dd>
+    User Data FBO
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">depth</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">stencil</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color0</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color1</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color2</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">colorn</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">color15</span>
+            <span class="types"><a class="type" href="../modules/FBO.html#attachment">attachment</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawbuffers</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         <code>{ GL_COLOR_ATTACHMENT0_EXT, GL_COLOR_ATTACHMENT3_EXT, ..}</code>
+        </li>
+        <li><span class="parameter">readbuffer</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         <code>GL_COLOR_ATTACHMENT0_EXT</code>
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

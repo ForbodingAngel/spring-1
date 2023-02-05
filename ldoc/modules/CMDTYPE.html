@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><a href="../modules/UnsyncedCtrl.html">UnsyncedCtrl</a></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><strong>CMDTYPE</strong></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>CMDTYPE</code></h1>
+<p>Command type constants</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaConstCMDTYPE.cpp">rts/Lua/LuaConstCMDTYPE.cpp</a>
+    </ul>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#CMDTYPE">CMDTYPE</a></td>
+	<td class="summary">Note, the CMDTYPE[] table is bidirectional.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "CMDTYPE"></a>
+    <strong>CMDTYPE</strong>
+    </dt>
+    <dd>
+    Note, the CMDTYPE[] table is bidirectional.  That means: CMDTYPE[CMDTYPE.ICON] := "CMDTYPE_ICON"
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">ICON</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 0 parameters in return
+        </li>
+        <li><span class="parameter">ICON_MODE</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (number selected mode)
+        </li>
+        <li><span class="parameter">ICON_MAP</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 3 parameters in return (mappos)
+        </li>
+        <li><span class="parameter">ICON_AREA</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 4 parameters in return (mappos+radius)
+        </li>
+        <li><span class="parameter">ICON_UNIT</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameters in return (unitid)
+        </li>
+        <li><span class="parameter">ICON_UNIT_OR_MAP</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameters in return (unitid) or 3 parameters in return (mappos)
+        </li>
+        <li><span class="parameter">ICON_FRONT</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 3 or 6 parameters in return (middle and right side of front if a front was defined)
+        </li>
+        <li><span class="parameter">COMBO_BOX</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (number selected option)
+        </li>
+        <li><span class="parameter">ICON_UNIT_OR_AREA</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (unitid) or 4 parameters in return (mappos+radius)
+        </li>
+        <li><span class="parameter">ICON_UNIT_FEATURE_OR_AREA</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (unitid or Game.maxUnits+featureid) or 4 parameters in return (mappos+radius)
+        </li>
+        <li><span class="parameter">ICON_BUILDING</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 3 parameters in return (mappos)
+        </li>
+        <li><span class="parameter">ICON_UNIT_OR_RECTANGLE</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (unitid) or 3 parameters in return (mappos) or 6 parameters in return (startpos+endpos)
+        </li>
+        <li><span class="parameter">NUMBER</span>
+            <span class="types"><span class="type">number</span></span>
+         expect 1 parameter in return (number)
+        </li>
+        <li><span class="parameter">CUSTOM</span>
+            <span class="types"><span class="type">number</span></span>
+         used with CMD_INTERNAL
+        </li>
+        <li><span class="parameter">NEXT</span>
+            <span class="types"><span class="type">number</span></span>
+         next command page used with CMD_INTERNAL
+        </li>
+        <li><span class="parameter">PREV</span>
+            <span class="types"><span class="type">number</span></span>
+         previous command page used with CMD_INTERNAL
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

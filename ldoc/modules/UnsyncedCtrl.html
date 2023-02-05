@@ -1,0 +1,6238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Spring Lua API documentation</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Spring Lua API</h1>
+
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Tables">Tables</a></li>
+<li><a href="#Give_Order">Give Order </a></li>
+<li><a href="#Ingame_Console">Ingame Console </a></li>
+<li><a href="#Messages">Messages </a></li>
+<li><a href="#Sounds">Sounds </a></li>
+<li><a href="#Camera">Camera </a></li>
+<li><a href="#Lighting">Lighting </a></li>
+<li><a href="#Unit_custom_rendering">Unit custom rendering </a></li>
+<li><a href="#Features">Features </a></li>
+<li><a href="#Unit_Icons">Unit Icons </a></li>
+<li><a href="#Virtual_File_System">Virtual File System </a></li>
+<li><a href="#GUI">GUI </a></li>
+<li><a href="#Mouse">Mouse </a></li>
+<li><a href="#LOS_Colors">LOS Colors </a></li>
+<li><a href="#Engine_Config">Engine Config </a></li>
+<li><a href="#Unit_Group">Unit Group </a></li>
+<li><a href="#UI">UI </a></li>
+<li><a href="#Sharing">Sharing </a></li>
+<li><a href="#Markers">Markers </a></li>
+<li><a href="#Sun">Sun </a></li>
+<li><a href="#AI">AI </a></li>
+<li><a href="#Developers">Developers </a></li>
+<li><a href="#Preload">Preload </a></li>
+<li><a href="#Misc">Misc </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/SyncedCtrl.html">SyncedCtrl</a></li>
+  <li><strong>UnsyncedCtrl</strong></li>
+  <li><a href="../modules/SyncedRead.html">SyncedRead</a></li>
+  <li><a href="../modules/LuaHandle.html">LuaHandle</a></li>
+  <li><a href="../modules/LuaHandleSynced.html">LuaHandleSynced</a></li>
+  <li><a href="../modules/MetalMap.html">MetalMap</a></li>
+  <li><a href="../modules/Shaders.html">Shaders</a></li>
+  <li><a href="../modules/FBO.html">FBO</a></li>
+  <li><a href="../modules/RBO.html">RBO</a></li>
+  <li><a href="../modules/MathExtra.html">MathExtra</a></li>
+  <li><a href="../modules/BitOps.html">BitOps</a></li>
+  <li><a href="../modules/Game.html">Game</a></li>
+  <li><a href="../modules/Engine.html">Engine</a></li>
+  <li><a href="../modules/Platform.html">Platform</a></li>
+  <li><a href="../modules/CMD.html">CMD</a></li>
+  <li><a href="../modules/CMDTYPE.html">CMDTYPE</a></li>
+  <li><a href="../modules/COB.html">COB</a></li>
+  <li><a href="../modules/GL.html">GL</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>UnsyncedCtrl</code></h1>
+<p>Callouts to set state</p>
+<p>
+
+<hr/>
+</p>
+    <h3>See also:</h3>
+    <ul>
+         <a href="https://github.com/beyond-all-reason/spring/blob/BAR105/rts/Lua/LuaUnsyncedCtrl.cpp">rts/Lua/LuaUnsyncedCtrl.cpp</a>
+    </ul>
+
+
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#rgb">rgb</a></td>
+	<td class="summary">Color triple (RGB)</td>
+	</tr>
+</table>
+<h2><a href="#Give_Order">Give Order </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#cmdOpts">cmdOpts</a></td>
+	<td class="summary">Command Options params</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrder">Spring.GiveOrder(cmdID, params, options)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderToUnit">Spring.GiveOrderToUnit(unitID, cmdID, params, options)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderToUnitMap">Spring.GiveOrderToUnitMap(unitMap, cmdID, params, options)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderToUnitArray">Spring.GiveOrderToUnitArray(unitArray, cmdID, params, options)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cmdSpec">cmdSpec</a></td>
+	<td class="summary">Command spec</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderArrayToUnit">Spring.GiveOrderArrayToUnit(unitID, cmdArray)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderArrayToUnitMap">Spring.GiveOrderArrayToUnitMap(unitMap, cmdArray)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GiveOrderArrayToUnitArray">Spring.GiveOrderArrayToUnitArray(unitArray, cmdArray)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetBuildSpacing">Spring.SetBuildSpacing(spacing)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetBuildFacing">Spring.SetBuildFacing(facing)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Ingame_Console">Ingame Console </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Ping">Spring.Ping(pingTag)</a></td>
+	<td class="summary">Send a ping request to the server</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Echo">Spring.Echo(arg1[, arg2[, argn]])</a></td>
+	<td class="summary">Useful for debugging.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Log">Spring.Log(section, logLevel, logMessage1[, logMessage2[, logMessagen]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendCommands">Spring.SendCommands(command1, command2)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetMapShader">Spring.SetMapShader(standardShaderID, deferredShaderID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetMapSquareTexture">Spring.SetMapSquareTexture(texSqrX, texSqrY, luaTexName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetMapShadingTexture">Spring.SetMapShadingTexture(texType, texName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetSkyBoxTexture">Spring.SetSkyBoxTexture(texName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Messages">Messages </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendMessage">Spring.SendMessage(message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendMessageToSpectators">Spring.SendMessageToSpectators(message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendMessageToPlayer">Spring.SendMessageToPlayer(playerID, message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendMessageToTeam">Spring.SendMessageToTeam(teamID, message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendMessageToAllyTeam">Spring.SendMessageToAllyTeam(allyID, message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Sounds">Sounds </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.LoadSoundDef">Spring.LoadSoundDef(soundfile)</a></td>
+	<td class="summary">Loads a SoundDefs file, the format is the same as in <code>gamedata/sounds.lua</code>.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PlaySoundFile">Spring.PlaySoundFile(soundfile[, volume=1.0[, posx[, posy[, posz[, speedx[, speedy[, speedz[, channel]]]]]]]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PlaySoundStream">Spring.PlaySoundStream(oggfile[, volume=1.0[, enqueue]])</a></td>
+	<td class="summary">Allows to play an Ogg Vorbis (.OGG) compressed sound file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.StopSoundStream">Spring.StopSoundStream()</a></td>
+	<td class="summary">Terminates any SoundStream currently running.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PauseSoundStream">Spring.PauseSoundStream()</a></td>
+	<td class="summary">Pause any SoundStream currently running.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetSoundStreamVolume">Spring.SetSoundStreamVolume(volume)</a></td>
+	<td class="summary">Set volume for SoundStream</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetSoundEffectParams">Spring.SetSoundEffectParams()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.DrawUnitCommands">Spring.DrawUnitCommands(unitID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.DrawUnitCommands">Spring.DrawUnitCommands(units, tableOrArray)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Camera">Camera </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#camState">camState</a></td>
+	<td class="summary">Parameters for camera state</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetCameraTarget">Spring.SetCameraTarget(x, y, z[, transTime])</a></td>
+	<td class="summary">For Spring Engine XZ represents horizontal, from north west corner of map and Y vertical, from water level and rising.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetCameraTarget">Spring.SetCameraTarget(px, py, pz, tx, ty, tz)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetCameraState">Spring.SetCameraState(camState, camTime)</a></td>
+	<td class="summary">Sets camera state</td>
+	</tr>
+</table>
+<h2><a href="#Lighting">Lighting </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#lightParams">lightParams</a></td>
+	<td class="summary">Parameters for lighting</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AddMapLight">Spring.AddMapLight(lightParams)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AddModelLight">Spring.AddModelLight(lightParams)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.UpdateMapLight">Spring.UpdateMapLight(lightHandle, lightParams)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.UpdateModelLight">Spring.UpdateModelLight(lightHandle, lightParams)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AddLightTrackingTarget">Spring.AddLightTrackingTarget()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetMapLightTrackingState">Spring.SetMapLightTrackingState(lightHandle, unitOrProjectileID, enableTracking, unitOrProjectile)</a></td>
+	<td class="summary">Set a map-illuminating light to start/stop tracking the position of a moving object (unit or projectile)</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetModelLightTrackingState">Spring.SetModelLightTrackingState(lightHandle, unitOrProjectileID, enableTracking, unitOrProjectile)</a></td>
+	<td class="summary">Set a model-illuminating light to start/stop tracking the position of a moving object (unit or projectile)</td>
+	</tr>
+</table>
+<h2><a href="#Unit_custom_rendering">Unit custom rendering </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitNoDraw">Spring.SetUnitNoDraw(unitID, noDraw)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitEngineDrawMask">Spring.SetUnitEngineDrawMask(unitID, drawMask)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitAlwaysUpdateMatrix">Spring.SetUnitAlwaysUpdateMatrix(unitID, alwaysUpdateMatrix)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitNoMinimap">Spring.SetUnitNoMinimap(unitID, unitNoMinimap)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitNoSelect">Spring.SetUnitNoSelect(unitID, unitNoSelect)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitLeaveTracks">Spring.SetUnitLeaveTracks(unitID, unitLeaveTracks)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitSelectionVolumeData">Spring.SetUnitSelectionVolumeData(unitID, featureID, scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, vType, tType, Axis)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Features">Features </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetFeatureNoDraw">Spring.SetFeatureNoDraw(featureID, noDraw)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetFeatureFade">Spring.SetFeatureFade(featureID, allow)</a></td>
+	<td class="summary">Control whether a feature will fade or not when zoomed out.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetFeatureSelectionVolumeData">Spring.SetFeatureSelectionVolumeData(featureID, scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, vType, tType, Axis)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Unit_Icons">Unit Icons </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AddUnitIcon">Spring.AddUnitIcon(iconName, texFile[, size[, dist[, radAdjust]]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.FreeUnitIcon">Spring.FreeUnitIcon(iconName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitDefIcon">Spring.SetUnitDefIcon(unitDefID, iconName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitDefImage">Spring.SetUnitDefImage(unitDefID, image)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Virtual_File_System">Virtual File System </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ExtractModArchiveFile">Spring.ExtractModArchiveFile(modfile)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.CreateDir">Spring.CreateDir(path)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#GUI">GUI </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetActiveCommand">Spring.SetActiveCommand(action[, actionExtra])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetActiveCommand">Spring.SetActiveCommand(cmdIndex[, button=1][, leftClick], rightClick, alt, ctrl, meta, shift)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.LoadCmdColorsConfig">Spring.LoadCmdColorsConfig(config)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.LoadCtrlPanelConfig">Spring.LoadCtrlPanelConfig(config)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ForceLayoutUpdate">Spring.ForceLayoutUpdate()</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawSelectionInfo">Spring.SetDrawSelectionInfo(enable)</a></td>
+	<td class="summary">Disables the "Selected Units x" box in the GUI.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetBoxSelectionByEngine">Spring.SetBoxSelectionByEngine(state)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetTeamColor">Spring.SetTeamColor(teamID, r, g, b)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.AssignMouseCursor">Spring.AssignMouseCursor(cmdName, iconFileName[, overwrite=true[, hotSpotTopLeft=false]])</a></td>
+	<td class="summary">Changes/creates the cursor of a single CursorCmd.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ReplaceMouseCursor">Spring.ReplaceMouseCursor(oldFileName, newFileName[, hotSpotTopLeft=false])</a></td>
+	<td class="summary">Mass replace all occurrences of the cursor in all CursorCmds.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetCustomCommandDrawData">Spring.SetCustomCommandDrawData(cmdID[, cmdReference])</a></td>
+	<td class="summary">Register your custom cmd so it gets visible in the unit's cmd queue</td>
+	</tr>
+</table>
+<h2><a href="#Mouse">Mouse </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.WarpMouse">Spring.WarpMouse(x, y)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetMouseCursor">Spring.SetMouseCursor(cursorName[, cursorScale=1.0])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#LOS_Colors">LOS Colors </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetLosViewColors">Spring.SetLosViewColors(always, LOS, radar, jam, radar2)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Engine_Config">Engine Config </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetConfigInt">Spring.SetConfigInt(name, value[, useOverlay=false])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetConfigFloat">Spring.SetConfigFloat(name, value[, useOverla=false])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetConfigString">Spring.SetConfigString(name, value[, useOverlay=false])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Unit_Group">Unit Group </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetUnitGroup">Spring.SetUnitGroup(unitID, groupID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#UI">UI </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendLuaUIMsg">Spring.SendLuaUIMsg(message, mode)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendLuaGaiaMsg">Spring.SendLuaGaiaMsg(message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendLuaRulesMsg">Spring.SendLuaRulesMsg(message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetLastMessagePosition">Spring.SetLastMessagePosition(x, y, z)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Sharing">Sharing </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetShareLevel">Spring.SetShareLevel(resource, shareLevel)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ShareResources">Spring.ShareResources(teamID, units)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ShareResources">Spring.ShareResources(teamID, resource, amount)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Markers">Markers </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.MarkerAddPoint">Spring.MarkerAddPoint(x, y, z[, text=""[, localOnly]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.MarkerAddLine">Spring.MarkerAddLine(x1, y1, z1, x2, y2, z2[, localOnly=false[, playerId]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.MarkerErasePosition">Spring.MarkerErasePosition(x, y, z, noop[, localOnly=false[, playerId]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Sun">Sun </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetAtmosphere">Spring.SetAtmosphere(params)</a></td>
+	<td class="summary">It can be used to modify the following atmosphere parameters</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetSunDirection">Spring.SetSunDirection(dirX, dirY, dirZ)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetSunLighting">Spring.SetSunLighting(params)</a></td>
+	<td class="summary">It can be used to modify the following sun lighting parameters</td>
+	</tr>
+</table>
+<h2><a href="#AI">AI </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SendSkirmishAIMessage">Spring.SendSkirmishAIMessage(aiTeam, message)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Developers">Developers </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetLogSectionFilterLevel">Spring.SetLogSectionFilterLevel(sectionName, logLevel)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.GarbageCollectCtrl">Spring.GarbageCollectCtrl([itersPerBatch[, numStepsPerIter[, minStepsPerIter[, maxStepsPerIter[, minLoopRunTime[, maxLoopRunTime[, baseRunTimeMult[, baseMemLoadMult]]]]]]]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawSky">Spring.SetDrawSky(drawSky)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawWater">Spring.SetDrawWater(drawWater)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawGround">Spring.SetDrawGround(drawGround)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawGroundDeferred">Spring.SetDrawGroundDeferred(drawGroundDeferred[, drawGroundForward])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetDrawModelsDeferred">Spring.SetDrawModelsDeferred(drawUnitsDeferred, drawFeaturesDeferred[, drawUnitsForward[, drawFeaturesForward]])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetVideoCapturingMode">Spring.SetVideoCapturingMode(allowCaptureMode)</a></td>
+	<td class="summary">This doesn't actually record the game in any way, it just regulates the framerate and interpolations.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetVideoCapturingTimeOffset">Spring.SetVideoCapturingTimeOffset(timeOffset)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#waterParams">waterParams</a></td>
+	<td class="summary">Water params</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetWaterParams">Spring.SetWaterParams(waterParams)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Preload">Preload </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PreloadUnitDefModel">Spring.PreloadUnitDefModel(unitDefID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PreloadFeatureDefModel">Spring.PreloadFeatureDefModel(featureDefID)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.PreloadSoundItem">Spring.PreloadSoundItem(name)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.LoadModelTextures">Spring.LoadModelTextures(modelName)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+</table>
+<h2><a href="#Misc">Misc </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Reload">Spring.Reload(startScript)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Restart">Spring.Restart(commandline_args, startScript)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Start">Spring.Start(commandline_args, startScript)</a></td>
+	<td class="summary">Launches a new Spring instance without terminating the existing one.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetWMIcon">Spring.SetWMIcon(iconFileName)</a></td>
+	<td class="summary">Sets the icon for the process which is seen in the OS task-bar and other places (default: spring-logo).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SetWMCaption">SetWMCaption(title[, titleShort=title])</a></td>
+	<td class="summary">Sets the window title for the process (default: "Spring <version>").</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.ClearWatchDogTimer">Spring.ClearWatchDogTimer([threadName=main])</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.SetClipboard">Spring.SetClipboard(text)</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Spring.Yield">Spring.Yield(sleep)</a></td>
+	<td class="summary">Relinquish control of the game loading thread and OpenGL context back to the UI (LuaIntro).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "rgb"></a>
+    <strong>rgb</strong>
+    </dt>
+    <dd>
+    Color triple (RGB)
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">r</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">g</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">b</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Give_Order"></a>Give Order </h2>
+
+          <div class="section-description">
+           Options can also be a bitmask; e.g. 0 instead of an empty table (can avoid performance hit on table creation)
+ See <code>Constants.CMD</code> for relevant constants.
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "cmdOpts"></a>
+    <strong>cmdOpts</strong>
+    </dt>
+    <dd>
+    Command Options params </p>
+
+<p> Can be specified as a table, or as an array containing any of the keys
+ below.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">right</span>
+            <span class="types"><span class="type">bool</span></span>
+         Right mouse key pressed
+        </li>
+        <li><span class="parameter">alt</span>
+            <span class="types"><span class="type">bool</span></span>
+         Alt key pressed
+        </li>
+        <li><span class="parameter">ctrl</span>
+            <span class="types"><span class="type">bool</span></span>
+         Ctrl key pressed
+        </li>
+        <li><span class="parameter">shift</span>
+            <span class="types"><span class="type">bool</span></span>
+         Shift key pressed
+        </li>
+        <li><span class="parameter">meta</span>
+            <span class="types"><span class="type">bool</span></span>
+         Meta (windows/mac/mod4) key pressed
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrder"></a>
+    <strong>Spring.GiveOrder(cmdID, params, options)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">params</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">true</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderToUnit"></a>
+    <strong>Spring.GiveOrderToUnit(unitID, cmdID, params, options)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">params</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">true</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderToUnitMap"></a>
+    <strong>Spring.GiveOrderToUnitMap(unitMap, cmdID, params, options)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitMap</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         { [unitID] = arg1, ... }
+        </li>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">params</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">true</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderToUnitArray"></a>
+    <strong>Spring.GiveOrderToUnitArray(unitArray, cmdID, params, options)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitArray</span>
+            <span class="types"><span class="type">{number,...}</span></span>
+         array of unit ids
+        </li>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">params</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">true</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "cmdSpec"></a>
+    <strong>cmdSpec</strong>
+    </dt>
+    <dd>
+    Command spec </p>
+
+<p> Used when assigning multiple commands at once
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">params</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdOpts">cmdOpts</a></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderArrayToUnit"></a>
+    <strong>Spring.GiveOrderArrayToUnit(unitID, cmdArray)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdArray</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdSpec">{cmdSpec,...}</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        ordersGiven
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderArrayToUnitMap"></a>
+    <strong>Spring.GiveOrderArrayToUnitMap(unitMap, cmdArray)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitMap</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         { [unitID] = arg1, ... }
+        </li>
+        <li><span class="parameter">cmdArray</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdSpec">{cmdSpec,...}</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        ordersGiven
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GiveOrderArrayToUnitArray"></a>
+    <strong>Spring.GiveOrderArrayToUnitArray(unitArray, cmdArray)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitArray</span>
+            <span class="types"><span class="type">{number,...}</span></span>
+         array of unit ids
+        </li>
+        <li><span class="parameter">cmdArray</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#cmdSpec">{cmdSpec,...}</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">true</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetBuildSpacing"></a>
+    <strong>Spring.SetBuildSpacing(spacing)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">spacing</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetBuildFacing"></a>
+    <strong>Spring.SetBuildFacing(facing)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">facing</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Ingame_Console"></a>Ingame Console </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.Ping"></a>
+    <strong>Spring.Ping(pingTag)</strong>
+    </dt>
+    <dd>
+    Send a ping request to the server
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pingTag</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.Echo"></a>
+    <strong>Spring.Echo(arg1[, arg2[, argn]])</strong>
+    </dt>
+    <dd>
+    Useful for debugging.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">arg1</span>
+
+
+
+        </li>
+        <li><span class="parameter">arg2</span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">argn</span>
+          Prints values in the spring chat console.
+  Hint: the default print() writes to STDOUT.
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.Log"></a>
+    <strong>Spring.Log(section, logLevel, logMessage1[, logMessage2[, logMessagen]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">section</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">logLevel</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+<p>   Possible values for logLevel are:</p>
+<pre><code>"debug"   | LOG.DEBUG
+"info"    | LOG.INFO
+"notice"  | LOG.NOTICE (engine default) (new in Version 97)
+"warning" | LOG.WARNING
+"error"   | LOG.ERROR
+"fatal"   | LOG.FATAL
+</code></pre>
+
+        </li>
+        <li><span class="parameter">logMessage1</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">logMessage2</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">logMessagen</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendCommands"></a>
+    <strong>Spring.SendCommands(command1, command2)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">command1</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         | { command1, command 2, ...}
+        </li>
+        <li><span class="parameter">command2</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetMapShader"></a>
+    <strong>Spring.SetMapShader(standardShaderID, deferredShaderID)</strong>
+    </dt>
+    <dd>
+     The ID's must refer to valid programs returned by <code>gl.CreateShader</code>.
+ Passing in a value of 0 will cause the respective shader to revert back to its engine default.
+ Custom map shaders that declare a uniform ivec2 named "texSquare" can sample from the default diffuse texture(s), which are always bound to TU 0.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">standardShaderID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">deferredShaderID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetMapSquareTexture"></a>
+    <strong>Spring.SetMapSquareTexture(texSqrX, texSqrY, luaTexName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">texSqrX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">texSqrY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">luaTexName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetMapShadingTexture"></a>
+    <strong>Spring.SetMapShadingTexture(texType, texName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">texType</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">texName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">Spring.SetMapShadingTexture(<span class="string">"$ssmf_specular"</span>, <span class="string">"name_of_my_shiny_texture"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Spring.SetSkyBoxTexture"></a>
+    <strong>Spring.SetSkyBoxTexture(texName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">texName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Messages"></a>Messages </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SendMessage"></a>
+    <strong>Spring.SendMessage(message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendMessageToSpectators"></a>
+    <strong>Spring.SendMessageToSpectators(message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         <code>&lt;PLAYER#&gt;</code> (with # being a playerid) inside the string will be replaced with the players name - i.e. : Spring.SendMessage ("<code>&lt;PLAYER1&gt;</code> did something") might display as "ProRusher did something"
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendMessageToPlayer"></a>
+    <strong>Spring.SendMessageToPlayer(playerID, message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">playerID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendMessageToTeam"></a>
+    <strong>Spring.SendMessageToTeam(teamID, message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendMessageToAllyTeam"></a>
+    <strong>Spring.SendMessageToAllyTeam(allyID, message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">allyID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Sounds"></a>Sounds </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.LoadSoundDef"></a>
+    <strong>Spring.LoadSoundDef(soundfile)</strong>
+    </dt>
+    <dd>
+    Loads a SoundDefs file, the format is the same as in <code>gamedata/sounds.lua</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">soundfile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.PlaySoundFile"></a>
+    <strong>Spring.PlaySoundFile(soundfile[, volume=1.0[, posx[, posy[, posz[, speedx[, speedy[, speedz[, channel]]]]]]]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">soundfile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">volume</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> 1.0)
+        </li>
+        <li><span class="parameter">posx</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">posy</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">posz</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">speedx</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">speedy</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">speedz</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">channel</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+<pre><code>Possible arguments for channel argument:
+"general" || 0 || nil (default)
+"battle" || "sfx" | 1
+"unitreply" || "voice" || 2
+"userinterface" || "ui" || 3
+</code></pre>
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        playSound
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.PlaySoundStream"></a>
+    <strong>Spring.PlaySoundStream(oggfile[, volume=1.0[, enqueue]])</strong>
+    </dt>
+    <dd>
+    Allows to play an Ogg Vorbis (.OGG) compressed sound file. </p>
+
+<p> Multiple sound streams may be played at once.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">oggfile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">volume</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> 1.0)
+        </li>
+        <li><span class="parameter">enqueue</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.StopSoundStream"></a>
+    <strong>Spring.StopSoundStream()</strong>
+    </dt>
+    <dd>
+    Terminates any SoundStream currently running.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.PauseSoundStream"></a>
+    <strong>Spring.PauseSoundStream()</strong>
+    </dt>
+    <dd>
+    Pause any SoundStream currently running.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetSoundStreamVolume"></a>
+    <strong>Spring.SetSoundStreamVolume(volume)</strong>
+    </dt>
+    <dd>
+    Set volume for SoundStream
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">volume</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetSoundEffectParams"></a>
+    <strong>Spring.SetSoundEffectParams()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.DrawUnitCommands"></a>
+    <strong>Spring.DrawUnitCommands(unitID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.DrawUnitCommands"></a>
+    <strong>Spring.DrawUnitCommands(units, tableOrArray)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">units</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         array of unit ids
+        </li>
+        <li><span class="parameter">tableOrArray</span>
+            <span class="types"><span class="type">bool</span></span>
+        [opt=false] when true <code>units</code> is interpreted as a table in the format <code>{ [unitID] = arg1, ... }</code>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Camera"></a>Camera </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "camState"></a>
+    <strong>camState</strong>
+    </dt>
+    <dd>
+    Parameters for camera state </p>
+
+<p> Highly dependent on the type of the current camera controller
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         "ta"|"spring"|"rot"|"ov"|"free"|"fps"|"dummy"
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><span class="type">number</span></span>
+         the camera mode: 0 (fps), 1 (ta), 2 (spring), 3 (rot), 4 (free), 5 (ov), 6 (dummy)
+        </li>
+        <li><span class="parameter">fov</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">px</span>
+            <span class="types"><span class="type">number</span></span>
+         Position X of the ground point in screen center
+        </li>
+        <li><span class="parameter">py</span>
+            <span class="types"><span class="type">number</span></span>
+         Position Y of the ground point in screen center
+        </li>
+        <li><span class="parameter">pz</span>
+            <span class="types"><span class="type">number</span></span>
+         Position Z of the ground point in screen center
+        </li>
+        <li><span class="parameter">dx</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera direction vector X
+        </li>
+        <li><span class="parameter">dy</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera direction vector Y
+        </li>
+        <li><span class="parameter">dz</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera direction vector Z
+        </li>
+        <li><span class="parameter">rx</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera rotation angle on X axis (spring)
+        </li>
+        <li><span class="parameter">ry</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera rotation angle on Y axis (spring)
+        </li>
+        <li><span class="parameter">rz</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera rotation angle on Z axis (spring)
+        </li>
+        <li><span class="parameter">angle</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera rotation angle on X axis (aka tilt/pitch) (ta)
+        </li>
+        <li><span class="parameter">flipped</span>
+            <span class="types"><span class="type">number</span></span>
+         -1 for when south is down, 1 for when north is down (ta)
+        </li>
+        <li><span class="parameter">dist</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera distance from the ground (spring)
+        </li>
+        <li><span class="parameter">height</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera distance from the ground (ta)
+        </li>
+        <li><span class="parameter">oldHeight</span>
+            <span class="types"><span class="type">number</span></span>
+         Camera distance from the ground, cannot be changed (rot)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetCameraTarget"></a>
+    <strong>Spring.SetCameraTarget(x, y, z[, transTime])</strong>
+    </dt>
+    <dd>
+    For Spring Engine XZ represents horizontal, from north west corner of map and Y vertical, from water level and rising.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transTime</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetCameraTarget"></a>
+    <strong>Spring.SetCameraTarget(px, py, pz, tx, ty, tz)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">px</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+        <li><span class="parameter">py</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+        <li><span class="parameter">pz</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+        <li><span class="parameter">tx</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+        <li><span class="parameter">ty</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+        <li><span class="parameter">tz</span>
+            <span class="types"><span class="type">number</span></span>
+        [opt=0]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetCameraState"></a>
+    <strong>Spring.SetCameraState(camState, camTime)</strong>
+    </dt>
+    <dd>
+    Sets camera state </p>
+
+<p> The fields in <a href="../modules/UnsyncedCtrl.html#camState">camState</a> must be consistent with the name/mode and current/new camera mode
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">camState</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#camState">camState</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">camTime</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        set
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Lighting"></a>Lighting </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "lightParams"></a>
+    <strong>lightParams</strong>
+    </dt>
+    <dd>
+    Parameters for lighting
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+
+
+        <ul>
+        <li><span class="parameter">px</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">py</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">pz</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">direction</span>
+
+
+        <ul>
+        <li><span class="parameter">dx</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">dy</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">dz</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">ambientColor</span>
+
+
+        <ul>
+        <li><span class="parameter">red</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">green</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">blue</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">diffuseColor</span>
+
+
+        <ul>
+        <li><span class="parameter">red</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">green</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">blue</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">specularColor</span>
+
+
+        <ul>
+        <li><span class="parameter">red</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">green</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">blue</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">intensityWeight</span>
+
+
+        <ul>
+        <li><span class="parameter">ambientWeight</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseWeight</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularWeight</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">ambientDecayRate</span> per-frame decay of ambientColor (spread over TTL frames)
+        <ul>
+        <li><span class="parameter">ambientRedDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ambientGreenDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ambientBlueDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">diffuseDecayRate</span> per-frame decay of diffuseColor (spread over TTL frames)
+        <ul>
+        <li><span class="parameter">diffuseRedDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseGreenDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseBlueDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">specularDecayRate</span> per-frame decay of specularColor (spread over TTL frames)
+        <ul>
+        <li><span class="parameter">specularRedDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularGreenDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularBlueDecay</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">decayFunctionType</span> *DecayType = 0.0 -> interpret *DecayRate values as linear, else as exponential
+        <ul>
+        <li><span class="parameter">ambientDecayType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseDecayType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularDecayType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        </li></ul>
+        <li><span class="parameter">radius</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fov</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ttl</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">priority</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ignoreLOS</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.AddMapLight"></a>
+    <strong>Spring.AddMapLight(lightParams)</strong>
+    </dt>
+    <dd>
+     requires MaxDynamicMapLights > 0
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightParams</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#lightParams">lightParams</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        lightHandle
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.AddModelLight"></a>
+    <strong>Spring.AddModelLight(lightParams)</strong>
+    </dt>
+    <dd>
+     requires MaxDynamicMapLights > 0
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightParams</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#lightParams">lightParams</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        lightHandle
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.UpdateMapLight"></a>
+    <strong>Spring.UpdateMapLight(lightHandle, lightParams)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightHandle</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">lightParams</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#lightParams">lightParams</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.UpdateModelLight"></a>
+    <strong>Spring.UpdateModelLight(lightHandle, lightParams)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightHandle</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">lightParams</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#lightParams">lightParams</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.AddLightTrackingTarget"></a>
+    <strong>Spring.AddLightTrackingTarget()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetMapLightTrackingState"></a>
+    <strong>Spring.SetMapLightTrackingState(lightHandle, unitOrProjectileID, enableTracking, unitOrProjectile)</strong>
+    </dt>
+    <dd>
+    Set a map-illuminating light to start/stop tracking the position of a moving object (unit or projectile)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightHandle</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitOrProjectileID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">enableTracking</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitOrProjectile</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetModelLightTrackingState"></a>
+    <strong>Spring.SetModelLightTrackingState(lightHandle, unitOrProjectileID, enableTracking, unitOrProjectile)</strong>
+    </dt>
+    <dd>
+    Set a model-illuminating light to start/stop tracking the position of a moving object (unit or projectile)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">lightHandle</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitOrProjectileID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">enableTracking</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitOrProjectile</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Unit_custom_rendering"></a>Unit custom rendering </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetUnitNoDraw"></a>
+    <strong>Spring.SetUnitNoDraw(unitID, noDraw)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">noDraw</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitEngineDrawMask"></a>
+    <strong>Spring.SetUnitEngineDrawMask(unitID, drawMask)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawMask</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitAlwaysUpdateMatrix"></a>
+    <strong>Spring.SetUnitAlwaysUpdateMatrix(unitID, alwaysUpdateMatrix)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">alwaysUpdateMatrix</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitNoMinimap"></a>
+    <strong>Spring.SetUnitNoMinimap(unitID, unitNoMinimap)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitNoMinimap</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitNoSelect"></a>
+    <strong>Spring.SetUnitNoSelect(unitID, unitNoSelect)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitNoSelect</span>
+            <span class="types"><span class="type">bool</span></span>
+         whether unit can be selected or not
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitLeaveTracks"></a>
+    <strong>Spring.SetUnitLeaveTracks(unitID, unitLeaveTracks)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">unitLeaveTracks</span>
+            <span class="types"><span class="type">bool</span></span>
+         whether unit leaves tracks on movement
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitSelectionVolumeData"></a>
+    <strong>Spring.SetUnitSelectionVolumeData(unitID, featureID, scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, vType, tType, Axis)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">vType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">tType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">Axis</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Features"></a>Features </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetFeatureNoDraw"></a>
+    <strong>Spring.SetFeatureNoDraw(featureID, noDraw)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">noDraw</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetFeatureFade"></a>
+    <strong>Spring.SetFeatureFade(featureID, allow)</strong>
+    </dt>
+    <dd>
+    Control whether a feature will fade or not when zoomed out.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">allow</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetFeatureSelectionVolumeData"></a>
+    <strong>Spring.SetFeatureSelectionVolumeData(featureID, scaleX, scaleY, scaleZ, offsetX, offsetY, offsetZ, vType, tType, Axis)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">scaleZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">offsetZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">vType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">tType</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">Axis</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Unit_Icons"></a>Unit Icons </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.AddUnitIcon"></a>
+    <strong>Spring.AddUnitIcon(iconName, texFile[, size[, dist[, radAdjust]]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">iconName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">texFile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">size</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">dist</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">radAdjust</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        added
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.FreeUnitIcon"></a>
+    <strong>Spring.FreeUnitIcon(iconName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">iconName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        freed
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitDefIcon"></a>
+    <strong>Spring.SetUnitDefIcon(unitDefID, iconName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">iconName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetUnitDefImage"></a>
+    <strong>Spring.SetUnitDefImage(unitDefID, image)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">image</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         luaTexture|texFile
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Virtual_File_System"></a>Virtual File System </h2>
+
+          <div class="section-description">
+
+
+
+<p> Prefer using <code>VFS</code> whenever possible</p>
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.ExtractModArchiveFile"></a>
+    <strong>Spring.ExtractModArchiveFile(modfile)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">modfile</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        extracted
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.CreateDir"></a>
+    <strong>Spring.CreateDir(path)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        dirCreated
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="GUI"></a>GUI </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetActiveCommand"></a>
+    <strong>Spring.SetActiveCommand(action[, actionExtra])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">actionExtra</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        commandSet
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetActiveCommand"></a>
+    <strong>Spring.SetActiveCommand(cmdIndex[, button=1][, leftClick], rightClick, alt, ctrl, meta, shift)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmdIndex</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">button</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> 1)
+        </li>
+        <li><span class="parameter">leftClick</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">rightClick</span>
+            <span class="types">optional <span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">alt</span>
+            <span class="types">optional <span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ctrl</span>
+            <span class="types">optional <span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">meta</span>
+            <span class="types">optional <span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">shift</span>
+            <span class="types">optional <span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        commandSet
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.LoadCmdColorsConfig"></a>
+    <strong>Spring.LoadCmdColorsConfig(config)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.LoadCtrlPanelConfig"></a>
+    <strong>Spring.LoadCtrlPanelConfig(config)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">config</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.ForceLayoutUpdate"></a>
+    <strong>Spring.ForceLayoutUpdate()</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawSelectionInfo"></a>
+    <strong>Spring.SetDrawSelectionInfo(enable)</strong>
+    </dt>
+    <dd>
+    Disables the "Selected Units x" box in the GUI.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">enable</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetBoxSelectionByEngine"></a>
+    <strong>Spring.SetBoxSelectionByEngine(state)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetTeamColor"></a>
+    <strong>Spring.SetTeamColor(teamID, r, g, b)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">r</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">g</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">b</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.AssignMouseCursor"></a>
+    <strong>Spring.AssignMouseCursor(cmdName, iconFileName[, overwrite=true[, hotSpotTopLeft=false]])</strong>
+    </dt>
+    <dd>
+    Changes/creates the cursor of a single CursorCmd.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmdName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">iconFileName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<p> not the full filename, instead it is like this:</p>
+<pre><code> Wanted filename: Anims/cursorattack_0.bmp
+ =&gt; iconFileName: cursorattack
+</code></pre>
+
+        </li>
+        <li><span class="parameter">overwrite</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>default</em> true)
+        </li>
+        <li><span class="parameter">hotSpotTopLeft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        assigned
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.ReplaceMouseCursor"></a>
+    <strong>Spring.ReplaceMouseCursor(oldFileName, newFileName[, hotSpotTopLeft=false])</strong>
+    </dt>
+    <dd>
+    Mass replace all occurrences of the cursor in all CursorCmds.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">oldFileName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">newFileName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">hotSpotTopLeft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        assigned
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetCustomCommandDrawData"></a>
+    <strong>Spring.SetCustomCommandDrawData(cmdID[, cmdReference])</strong>
+    </dt>
+    <dd>
+    Register your custom cmd so it gets visible in the unit's cmd queue
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cmdID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">cmdReference</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+         iconname | cmdID_cloneIcon
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        assigned
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Mouse"></a>Mouse </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.WarpMouse"></a>
+    <strong>Spring.WarpMouse(x, y)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetMouseCursor"></a>
+    <strong>Spring.SetMouseCursor(cursorName[, cursorScale=1.0])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cursorName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cursorScale</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>default</em> 1.0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="LOS_Colors"></a>LOS Colors </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetLosViewColors"></a>
+    <strong>Spring.SetLosViewColors(always, LOS, radar, jam, radar2)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">always</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         {r,g,b}
+        </li>
+        <li><span class="parameter">LOS</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         = {r,g,b}
+        </li>
+        <li><span class="parameter">radar</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         = {r,g,b}
+        </li>
+        <li><span class="parameter">jam</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         = {r,g,b}
+        </li>
+        <li><span class="parameter">radar2</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         = {r,g,b}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Engine_Config"></a>Engine Config </h2>
+
+          <div class="section-description">
+
+
+
+<p> The following functions read the engine configs saved in <code>Springsettings.cfg</code>, a version-ed instance of these or a custom file supplied on the command line.</p>
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetConfigInt"></a>
+    <strong>Spring.SetConfigInt(name, value[, useOverlay=false])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">useOverlay</span>
+            <span class="types"><span class="type">bool</span></span>
+         the value will only be set in memory, and not be restored for the next game.
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetConfigFloat"></a>
+    <strong>Spring.SetConfigFloat(name, value[, useOverla=false])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">useOverla</span>
+            <span class="types"><span class="type">bool</span></span>
+         the value will only be set in memory, and not be restored for the next game.y
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetConfigString"></a>
+    <strong>Spring.SetConfigString(name, value[, useOverlay=false])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">useOverlay</span>
+            <span class="types"><span class="type">bool</span></span>
+         the value will only be set in memory, and not be restored for the next game.
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Unit_Group"></a>Unit Group </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetUnitGroup"></a>
+    <strong>Spring.SetUnitGroup(unitID, groupID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">groupID</span>
+            <span class="types"><span class="type">number</span></span>
+         the group number to be assigned, or -1 for deassignment
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="UI"></a>UI </h2>
+
+          <div class="section-description">
+
+
+<p> Very important! (allows synced inter-lua-enviroment communications)</p>
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SendLuaUIMsg"></a>
+    <strong>Spring.SendLuaUIMsg(message, mode)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         "s"/"specs" | "a"/"allies"
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendLuaGaiaMsg"></a>
+    <strong>Spring.SendLuaGaiaMsg(message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SendLuaRulesMsg"></a>
+    <strong>Spring.SendLuaRulesMsg(message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetLastMessagePosition"></a>
+    <strong>Spring.SetLastMessagePosition(x, y, z)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Sharing"></a>Sharing </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetShareLevel"></a>
+    <strong>Spring.SetShareLevel(resource, shareLevel)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">resource</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         metal | energy
+        </li>
+        <li><span class="parameter">shareLevel</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.ShareResources"></a>
+    <strong>Spring.ShareResources(teamID, units)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">units</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.ShareResources"></a>
+    <strong>Spring.ShareResources(teamID, resource, amount)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">teamID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">resource</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         metal | energy
+        </li>
+        <li><span class="parameter">amount</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Markers"></a>Markers </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.MarkerAddPoint"></a>
+    <strong>Spring.MarkerAddPoint(x, y, z[, text=""[, localOnly]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>default</em> "")
+        </li>
+        <li><span class="parameter">localOnly</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.MarkerAddLine"></a>
+    <strong>Spring.MarkerAddLine(x1, y1, z1, x2, y2, z2[, localOnly=false[, playerId]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x1</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y1</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z1</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">x2</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y2</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z2</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">localOnly</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">playerId</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.MarkerErasePosition"></a>
+    <strong>Spring.MarkerErasePosition(x, y, z, noop[, localOnly=false[, playerId]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">x</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">y</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">z</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">noop</span>
+
+
+
+        </li>
+        <li><span class="parameter">localOnly</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">playerId</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Sun"></a>Sun </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetAtmosphere"></a>
+    <strong>Spring.SetAtmosphere(params)</strong>
+    </dt>
+    <dd>
+    It can be used to modify the following atmosphere parameters
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">params</span>
+
+
+        <ul>
+        <li><span class="parameter">fogStart</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fogEnd</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">sunColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">skyColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">cloudColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">Spring.SetAtmosphere({ fogStart = <span class="number">0</span>, fogEnd = <span class="number">0.5</span>, fogColor = { <span class="number">0.7</span>, <span class="number">0.2</span>, <span class="number">0.2</span>, <span class="number">1</span> }})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "Spring.SetSunDirection"></a>
+    <strong>Spring.SetSunDirection(dirX, dirY, dirZ)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">dirX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">dirY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">dirZ</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetSunLighting"></a>
+    <strong>Spring.SetSunLighting(params)</strong>
+    </dt>
+    <dd>
+    It can be used to modify the following sun lighting parameters
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">params</span>
+
+
+        <ul>
+        <li><span class="parameter">groundAmbientColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">groundDiffuseColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        </li></ul>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">Spring.SetSunLighting({groundAmbientColor = {<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">1</span>}, groundDiffuseColor = {<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">1</span>} })</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="AI"></a>AI </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SendSkirmishAIMessage"></a>
+    <strong>Spring.SendSkirmishAIMessage(aiTeam, message)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">aiTeam</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        ai_processed
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Developers"></a>Developers </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.SetLogSectionFilterLevel"></a>
+    <strong>Spring.SetLogSectionFilterLevel(sectionName, logLevel)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sectionName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">logLevel</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.GarbageCollectCtrl"></a>
+    <strong>Spring.GarbageCollectCtrl([itersPerBatch[, numStepsPerIter[, minStepsPerIter[, maxStepsPerIter[, minLoopRunTime[, maxLoopRunTime[, baseRunTimeMult[, baseMemLoadMult]]]]]]]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">itersPerBatch</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">numStepsPerIter</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">minStepsPerIter</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">maxStepsPerIter</span>
+            <span class="types"><span class="type">int</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">minLoopRunTime</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">maxLoopRunTime</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">baseRunTimeMult</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">baseMemLoadMult</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawSky"></a>
+    <strong>Spring.SetDrawSky(drawSky)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">drawSky</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawWater"></a>
+    <strong>Spring.SetDrawWater(drawWater)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">drawWater</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawGround"></a>
+    <strong>Spring.SetDrawGround(drawGround)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">drawGround</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawGroundDeferred"></a>
+    <strong>Spring.SetDrawGroundDeferred(drawGroundDeferred[, drawGroundForward])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">drawGroundDeferred</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawGroundForward</span>
+            <span class="types"><span class="type">bool</span></span>
+         allows disabling of the forward pass
+ treturn nil
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetDrawModelsDeferred"></a>
+    <strong>Spring.SetDrawModelsDeferred(drawUnitsDeferred, drawFeaturesDeferred[, drawUnitsForward[, drawFeaturesForward]])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">drawUnitsDeferred</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawFeaturesDeferred</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">drawUnitsForward</span>
+            <span class="types"><span class="type">bool</span></span>
+         allows disabling of the respective forward passes
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">drawFeaturesForward</span>
+            <span class="types"><span class="type">bool</span></span>
+         allows disabling of the respective forward passes
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetVideoCapturingMode"></a>
+    <strong>Spring.SetVideoCapturingMode(allowCaptureMode)</strong>
+    </dt>
+    <dd>
+    This doesn't actually record the game in any way, it just regulates the framerate and interpolations.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">allowCaptureMode</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetVideoCapturingTimeOffset"></a>
+    <strong>Spring.SetVideoCapturingTimeOffset(timeOffset)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">timeOffset</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "waterParams"></a>
+    <strong>waterParams</strong>
+    </dt>
+    <dd>
+    Water params
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">absorb</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">baseColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">minColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">surfaceColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">planeColor</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#rgb">rgb</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">texture</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         file
+        </li>
+        <li><span class="parameter">foamTexture</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         file
+        </li>
+        <li><span class="parameter">normalTexture</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         file
+        </li>
+        <li><span class="parameter">damage</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">repeatX</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">repeatY</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">surfaceAlpha</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ambientFactor</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">diffuseFactor</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularFactor</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">specularPower</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fresnelMin</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fresnelMax</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">fresnelPower</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">reflectionDistortion</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">blurBase</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">blurExponent</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">perlinStartFreq</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">perlinLacunarity</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">perlinAmplitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">numTiles</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">shoreWaves</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">forceRendering</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">hasWaterPlane</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetWaterParams"></a>
+    <strong>Spring.SetWaterParams(waterParams)</strong>
+    </dt>
+    <dd>
+      Does not need cheating enabled.
+  Allows to change water params (mostly BumpWater ones) at runtime. You may want to set BumpWaterUseUniforms in your springrc to 1, then you don't even need to restart BumpWater via <code>/water 4</code>.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">waterParams</span>
+            <span class="types"><a class="type" href="../modules/UnsyncedCtrl.html#waterParams">waterParams</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Preload"></a>Preload </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.PreloadUnitDefModel"></a>
+    <strong>Spring.PreloadUnitDefModel(unitDefID)</strong>
+    </dt>
+    <dd>
+     Allow the engine to load the unit's model (and texture) in a background thread.
+ Wreckages and buildOptions of a unit are automatically preloaded.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.PreloadFeatureDefModel"></a>
+    <strong>Spring.PreloadFeatureDefModel(featureDefID)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">featureDefID</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.PreloadSoundItem"></a>
+    <strong>Spring.PreloadSoundItem(name)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.LoadModelTextures"></a>
+    <strong>Spring.LoadModelTextures(modelName)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">modelName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span> or <span class="type">bool</span></span>
+        success
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Misc"></a>Misc </h2>
+
+          <div class="section-description">
+
+
+<hr/>
+
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "Spring.Reload"></a>
+    <strong>Spring.Reload(startScript)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">startScript</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the CONTENT of the script.txt spring should use to start.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.Restart"></a>
+    <strong>Spring.Restart(commandline_args, startScript)</strong>
+    </dt>
+    <dd>
+     If this call returns, something went wrong
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">commandline_args</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         commandline arguments passed to spring executable.
+        </li>
+        <li><span class="parameter">startScript</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.Start"></a>
+    <strong>Spring.Start(commandline_args, startScript)</strong>
+    </dt>
+    <dd>
+    Launches a new Spring instance without terminating the existing one. </p>
+
+<p> If this call returns, something went wrong
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">commandline_args</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         commandline arguments passed to spring executable.
+        </li>
+        <li><span class="parameter">startScript</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         the CONTENT of the script.txt spring should use to start (if empty, no start-script is added, you can still point spring to your custom script.txt when you add the file-path to commandline_args.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetWMIcon"></a>
+    <strong>Spring.SetWMIcon(iconFileName)</strong>
+    </dt>
+    <dd>
+    Sets the icon for the process which is seen in the OS task-bar and other places (default: spring-logo). </p>
+
+<p> Note: has to be 24bit or 32bit.
+ Note: on windows, it has to be 32x32 pixels in size (recommended for cross-platform)
+ Note: *.bmp images have to be in BGR format (default for m$ ones).
+ Note: *.ico images are not supported.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">iconFileName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SetWMCaption"></a>
+    <strong>SetWMCaption(title[, titleShort=title])</strong>
+    </dt>
+    <dd>
+    Sets the window title for the process (default: "Spring <version>"). </p>
+
+<p> The shortTitle is displayed in the OS task-bar (default: "Spring <version>").</p>
+
+<p> NOTE: shortTitle is only ever possibly used under X11 (Linux &amp; OS X), but not with QT (KDE) and never under Windows.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">title</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">titleShort</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>default</em> title)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.ClearWatchDogTimer"></a>
+    <strong>Spring.ClearWatchDogTimer([threadName=main])</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">threadName</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+         (<em>default</em> main)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.SetClipboard"></a>
+    <strong>Spring.SetClipboard(text)</strong>
+    </dt>
+    <dd>
+
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">nil</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Spring.Yield"></a>
+    <strong>Spring.Yield(sleep)</strong>
+    </dt>
+    <dd>
+    Relinquish control of the game loading thread and OpenGL context back to the UI (LuaIntro). </p>
+
+<p> Should be called after each widget/unsynced gadget is loaded in widget/gadget handler. Use it to draw screen updates and process windows events.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sleep</span>
+            <span class="types"><span class="type">number</span></span>
+         time in milliseconds.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        when true caller should continue calling <a href="../modules/UnsyncedCtrl.html#Spring.Yield">Spring.Yield</a> during the widgets/gadgets load, when false it shouldn't call it any longer.
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
